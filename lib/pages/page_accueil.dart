@@ -20,7 +20,7 @@ class PageAccueil extends StatelessWidget {
       body: DoubleBackToCloseApp(
         //snackBar:fnSnackmsg(context, 'Appuyez à nouveau sur retour pour quitter'),
         snackBar: SnackBar(
-            backgroundColor: Colors.black.withOpacity(0.5),
+            backgroundColor: Colors.black.withValues(alpha: 0.5),
             margin: const EdgeInsets.all(5),
             behavior: SnackBarBehavior.floating,
             shape:

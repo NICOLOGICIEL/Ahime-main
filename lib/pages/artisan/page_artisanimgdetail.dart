@@ -314,7 +314,7 @@ class PageArtisanimg extends StatelessWidget {
           },
           child: CircleAvatar(
             radius: 23,
-            backgroundColor: Colors.white.withOpacity(0.3),
+            backgroundColor: Colors.white.withValues(alpha: 0.3),
             child: const Icon(
               Icons.phone_in_talk_sharp,
               color: Colors.white,
@@ -328,7 +328,7 @@ class PageArtisanimg extends StatelessWidget {
           },
           child: CircleAvatar(
             radius: 23,
-            backgroundColor: Colors.white.withOpacity(0.3),
+            backgroundColor: Colors.white.withValues(alpha: 0.3),
             child: const Icon(
               Icons.chat_bubble_rounded,
               color: Colors.white,

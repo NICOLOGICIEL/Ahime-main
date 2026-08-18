@@ -23,14 +23,14 @@ const Color myColorWhite = Color(0xFFF6F7F9);
 const Color myColorRed = Color(0xFFcb182b);
 const Color myColorBlueLight = Color(0xFFeaf1f9);
 const Color myColorBgGrey = Color(0xFFf1f1f2);
-var myColorGreyBorber = Colors.grey.withOpacity(0.5);
+var myColorGreyBorber = Colors.grey.withValues(alpha: 0.5);
 const Color myColorGreenLight = Color(0xFFe9fdfe);
 const Color myColorGreenn = Color(0xFF35d852);
 
 //adresse API
 // ignore: constant_identifier_names
-const String APIServeur = "https://ahime-ci.com/casa2babyAPI";
-const String apiBaseURL = "ahime-ci.com/casa2babyAPI";
+const String APIServeur = "http://localhost:8000";
+const String apiBaseURL = "localhost";
 var endpoint = '/api/action';
 var endpointINI = '/api';
 final apiurl = '$APIServeur$endpoint';
@@ -644,7 +644,7 @@ copyClipBord(
     {required context, required String txtCopy, String msgCopy = ''}) async {
   await Clipboard.setData(ClipboardData(text: txtCopy)).then((_) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        backgroundColor: Colors.black.withOpacity(0.5),
+      backgroundColor: Colors.black.withValues(alpha: 0.5),
         margin: const EdgeInsets.all(5),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -655,7 +655,7 @@ copyClipBord(
 
 fnSnackmsg(context, txtmsg) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: Colors.black.withOpacity(0.5),
+      backgroundColor: Colors.black.withValues(alpha: 0.5),
       margin: const EdgeInsets.all(5),
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),

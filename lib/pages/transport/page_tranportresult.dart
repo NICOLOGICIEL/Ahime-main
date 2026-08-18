@@ -399,7 +399,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
           },
           child: CircleAvatar(
             radius: 23,
-            backgroundColor: myColorBlue.withOpacity(0.0),
+            backgroundColor: myColorBlue.withValues(alpha: 0.0),
             child: const Icon(
               Icons.phone_in_talk_sharp,
               color: myColorBlue,
@@ -419,7 +419,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
           },
           child: CircleAvatar(
             radius: 23,
-            backgroundColor: myColorBlue.withOpacity(0.0),
+            backgroundColor: myColorBlue.withValues(alpha: 0.0),
             child: const Icon(
               Icons.access_time_outlined,
               color: myColorBlue,
@@ -433,7 +433,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
           },
           child: CircleAvatar(
             radius: 23,
-            backgroundColor: myColorBlue.withOpacity(0.0),
+            backgroundColor: myColorBlue.withValues(alpha: 0.0),
             child: Icon(
               Icons.edit_note_rounded,
               color: myColorBlue,
