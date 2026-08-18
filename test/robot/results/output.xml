@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.4 on win32)" generated="2026-07-31T13:48:28.167191" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\NKOUASSI\Documents\GitHub\ahime\test\robot\tests">
+<suite id="s1-s1" name="Artisans" source="C:\Users\NKOUASSI\Documents\GitHub\ahime\test\robot\tests\artisans.robot">
+<kw name="Open Ahime App" owner="ahime" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-31T13:48:28.513003" level="INFO">${profile} = C:/Users/NKOUASSI/AppData/Local/Temp/tmp69pz_brw</msg>
+<var>${profile}</var>
+<arg>__import__('tempfile').mkdtemp().replace("\\\\", "/")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-31T13:48:28.511299" elapsed="0.001755"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:28.513488" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:8080'.</msg>
+<arg>${AHIME_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--window-size=1280,900");add_argument("--disable-web-security");add_argument("--disable-site-isolation-trials");add_argument("--user-data-dir=${profile}")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:48:28.513227" elapsed="6.169906"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-07-31T13:48:34.683367" elapsed="0.002257"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:34.686457" elapsed="0.021793"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:34.708917" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:48:34.708590" elapsed="0.007804"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:34.716663" elapsed="1.228469"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:48:34.686057" elapsed="1.259266"/>
+</kw>
+<doc>Ouvre le navigateur sur l'app (sécurité web désactivée pour
+contourner l'absence de CORS sur l'API en environnement local)
+et active l'arbre sémantique Flutter.</doc>
+<status status="PASS" start="2026-07-31T13:48:28.510088" elapsed="7.435326"/>
+</kw>
+<test id="s1-s1-t1" name="Ouvrir Artisans affiche l'écran de recherche" line="17">
+<kw name="Go To Home" owner="ahime" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:35.946677" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${AHIME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:48:35.946473" elapsed="1.508741"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:37.456036" elapsed="0.096696"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:37.553275" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:48:37.553013" elapsed="0.626972"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:38.180410" elapsed="0.119435"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:48:37.455603" elapsed="0.844385"/>
+</kw>
+<doc>Revient à l'accueil (recharge l'app depuis zéro).</doc>
+<status status="PASS" start="2026-07-31T13:48:35.946188" elapsed="2.353865"/>
+</kw>
+<kw name="Open Category From Home" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${category_label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:38.300649" elapsed="0.042997"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:38.344806" level="INFO">Clicking element 'css:[aria-label*="Artisans"]'.</msg>
+<arg>css:[aria-label*="${category_label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:48:38.344105" elapsed="0.407275"/>
+</kw>
+<arg>Artisans</arg>
+<doc>Clique sur une carte de catégorie de l'accueil ("Hôtels", "Artisans", "Transports").</doc>
+<status status="PASS" start="2026-07-31T13:48:38.300329" elapsed="0.451302"/>
+</kw>
+<kw name="Page Should Contain Text" owner="ahime">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:39.009387" level="INFO">Current page contains text 'Rechercher un métier'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:48:38.752529" elapsed="0.257029"/>
+</kw>
+<arg>Rechercher un métier</arg>
+<doc>Vérifie qu'un texte *statique* (titre, description, non cliquable)
+est présent. Ce texte apparaît dans le contenu de la page une fois
+l'arbre sémantique activé, mais pas forcément via aria-label : on
+s'appuie donc sur le texte affiché plutôt que sur un attribut.</doc>
+<status status="PASS" start="2026-07-31T13:48:38.751999" elapsed="0.257724"/>
+</kw>
+<tag>artisans</tag>
+<status status="PASS" start="2026-07-31T13:48:35.945531" elapsed="3.064464"/>
+</test>
+<test id="s1-s1-t2" name="Ouvrir Artisans affiche les catégories de métiers" line="21">
+<kw name="Go To Home" owner="ahime" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:39.011339" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${AHIME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:48:39.011212" elapsed="0.871362"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:39.883298" elapsed="0.081090"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:39.964967" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:48:39.964699" elapsed="0.485313"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:40.450370" elapsed="0.215315"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:48:39.882930" elapsed="0.782931"/>
+</kw>
+<doc>Revient à l'accueil (recharge l'app depuis zéro).</doc>
+<status status="PASS" start="2026-07-31T13:48:39.010995" elapsed="1.654943"/>
+</kw>
+<kw name="Open Category From Home" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${category_label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:40.666621" elapsed="0.033356"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:40.700737" level="INFO">Clicking element 'css:[aria-label*="Artisans"]'.</msg>
+<arg>css:[aria-label*="${category_label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:48:40.700218" elapsed="0.202675"/>
+</kw>
+<arg>Artisans</arg>
+<doc>Clique sur une carte de catégorie de l'accueil ("Hôtels", "Artisans", "Transports").</doc>
+<status status="PASS" start="2026-07-31T13:48:40.666223" elapsed="0.236816"/>
+</kw>
+<kw name="Page Should Contain Text" owner="ahime">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:41.213337" level="INFO">Current page contains text 'Automobile'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:48:40.903490" elapsed="0.310008"/>
+</kw>
+<arg>Automobile</arg>
+<doc>Vérifie qu'un texte *statique* (titre, description, non cliquable)
+est présent. Ce texte apparaît dans le contenu de la page une fois
+l'arbre sémantique activé, mais pas forcément via aria-label : on
+s'appuie donc sur le texte affiché plutôt que sur un attribut.</doc>
+<status status="PASS" start="2026-07-31T13:48:40.903215" elapsed="0.310427"/>
+</kw>
+<kw name="Page Should Contain Text" owner="ahime">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:41.264178" level="INFO">Current page contains text 'Technologie'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:48:41.214275" elapsed="0.049995"/>
+</kw>
+<arg>Technologie</arg>
+<doc>Vérifie qu'un texte *statique* (titre, description, non cliquable)
+est présent. Ce texte apparaît dans le contenu de la page une fois
+l'arbre sémantique activé, mais pas forcément via aria-label : on
+s'appuie donc sur le texte affiché plutôt que sur un attribut.</doc>
+<status status="PASS" start="2026-07-31T13:48:41.213909" elapsed="0.050438"/>
+</kw>
+<kw name="Page Should Contain Text" owner="ahime">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:41.298102" level="INFO">Current page contains text 'Bâtiment'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:48:41.264715" elapsed="0.033485"/>
+</kw>
+<arg>Bâtiment</arg>
+<doc>Vérifie qu'un texte *statique* (titre, description, non cliquable)
+est présent. Ce texte apparaît dans le contenu de la page une fois
+l'arbre sémantique activé, mais pas forcément via aria-label : on
+s'appuie donc sur le texte affiché plutôt que sur un attribut.</doc>
+<status status="PASS" start="2026-07-31T13:48:41.264508" elapsed="0.033772"/>
+</kw>
+<tag>artisans</tag>
+<status status="PASS" start="2026-07-31T13:48:39.010503" elapsed="2.287902"/>
+</test>
+<kw name="Close Ahime App" owner="ahime" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-31T13:48:41.299420" elapsed="2.253310"/>
+</kw>
+<doc>Ferme le navigateur.</doc>
+<status status="PASS" start="2026-07-31T13:48:41.299134" elapsed="2.253759"/>
+</kw>
+<doc>Parcours Artisans : Accueil -&gt; Artisans.
+NOTE : contrairement à Hôtels (nouvelle archi, widgets Material
+standard), cet écran vient de l'ancienne architecture et ses
+boutons de catégorie (icônes) sont des GestureDetector "nus" qui
+n'exposent pas d'action tactile dans l'arbre sémantique Flutter.
+Ils ne sont donc pas cliquables via Selenium (ni utilisables par
+un lecteur d'écran en l'état). On se limite ici à vérifier que la
+page s'affiche correctement ; voir README.md pour le détail.</doc>
+<status status="PASS" start="2026-07-31T13:48:28.200864" elapsed="15.352085"/>
+</suite>
+<suite id="s1-s2" name="Hotels" source="C:\Users\NKOUASSI\Documents\GitHub\ahime\test\robot\tests\hotels.robot">
+<kw name="Open Ahime App" owner="ahime" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-31T13:48:43.559834" level="INFO">${profile} = C:/Users/NKOUASSI/AppData/Local/Temp/tmpel4o654u</msg>
+<var>${profile}</var>
+<arg>__import__('tempfile').mkdtemp().replace("\\\\", "/")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-31T13:48:43.558444" elapsed="0.001457"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:43.560655" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:8080'.</msg>
+<arg>${AHIME_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--window-size=1280,900");add_argument("--disable-web-security");add_argument("--disable-site-isolation-trials");add_argument("--user-data-dir=${profile}")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:48:43.560181" elapsed="6.818957"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-07-31T13:48:50.379531" elapsed="0.002327"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:50.382827" elapsed="0.025168"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:50.408641" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:48:50.408344" elapsed="0.007171"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:50.415801" elapsed="1.402764"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:48:50.382335" elapsed="1.436411"/>
+</kw>
+<doc>Ouvre le navigateur sur l'app (sécurité web désactivée pour
+contourner l'absence de CORS sur l'API en environnement local)
+et active l'arbre sémantique Flutter.</doc>
+<status status="PASS" start="2026-07-31T13:48:43.558076" elapsed="8.260754"/>
+</kw>
+<test id="s1-s2-t1" name="Ouvrir Hôtels affiche le champ de recherche" line="10">
+<kw name="Go To Home" owner="ahime" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:51.820124" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${AHIME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:48:51.819943" elapsed="1.522998"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:53.343737" elapsed="0.702485"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:54.047316" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:48:54.046782" elapsed="0.131285"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:54.178592" elapsed="0.138946"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:48:53.343333" elapsed="0.974485"/>
+</kw>
+<doc>Revient à l'accueil (recharge l'app depuis zéro).</doc>
+<status status="PASS" start="2026-07-31T13:48:51.819599" elapsed="2.498350"/>
+</kw>
+<kw name="Open Category From Home" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${category_label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:54.319164" elapsed="0.015787"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:54.336059" level="INFO">Clicking element 'css:[aria-label*="Hôtels"]'.</msg>
+<arg>css:[aria-label*="${category_label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:48:54.335396" elapsed="0.298702"/>
+</kw>
+<arg>Hôtels</arg>
+<doc>Clique sur une carte de catégorie de l'accueil ("Hôtels", "Artisans", "Transports").</doc>
+<status status="PASS" start="2026-07-31T13:48:54.318516" elapsed="0.315725"/>
+</kw>
+<kw name="Page Should Contain Aria Label" owner="ahime">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:54.909058" level="INFO">Current page contains element 'css:[aria-label*="Rechercher par nom"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:54.634795" elapsed="0.274429"/>
+</kw>
+<arg>Rechercher par nom</arg>
+<doc>Vérifie qu'un élément *interactif* (bouton, carte, champ...) avec
+ce libellé (partiel) est présent. Ces éléments exposent leur texte
+via l'attribut aria-label une fois l'arbre sémantique activé.</doc>
+<status status="PASS" start="2026-07-31T13:48:54.634472" elapsed="0.274894"/>
+</kw>
+<tag>hotels</tag>
+<status status="PASS" start="2026-07-31T13:48:51.818971" elapsed="3.090621"/>
+</test>
+<test id="s1-s2-t2" name="Ouvrir Hôtels charge une liste d'hôtels sans erreur" line="14">
+<kw name="Go To Home" owner="ahime" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:54.910791" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${AHIME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:48:54.910631" elapsed="0.990281"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:55.901627" elapsed="0.096884"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:55.999064" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:48:55.998804" elapsed="0.469045"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:56.468029" elapsed="0.075941"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:48:55.901260" elapsed="0.642882"/>
+</kw>
+<doc>Revient à l'accueil (recharge l'app depuis zéro).</doc>
+<status status="PASS" start="2026-07-31T13:48:54.910363" elapsed="1.633855"/>
+</kw>
+<kw name="Open Category From Home" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${category_label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:48:56.544845" elapsed="0.007173"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:56.552455" level="INFO">Clicking element 'css:[aria-label*="Hôtels"]'.</msg>
+<arg>css:[aria-label*="${category_label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:48:56.552181" elapsed="0.234126"/>
+</kw>
+<arg>Hôtels</arg>
+<doc>Clique sur une carte de catégorie de l'accueil ("Hôtels", "Artisans", "Transports").</doc>
+<status status="PASS" start="2026-07-31T13:48:56.544504" elapsed="0.241971"/>
+</kw>
+<kw name="Wait Until Data Loaded" owner="ahime">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-07-31T13:48:59.788088" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-07-31T13:48:56.787178" elapsed="3.001323"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:59.944032" level="INFO">Current page does not contain text 'Échec du chargement'.</msg>
+<arg>Échec du chargement</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:48:59.789239" elapsed="0.155022"/>
+</kw>
+<doc>Attend la fin du chargement asynchrone (spinner) sur un écran de
+résultats. NOTE : le contenu des listes défilantes (cartes hôtel,
+artisan, transport...) est peint sur le &lt;canvas&gt; Flutter mais
+n'apparaît PAS dans l'arbre sémantique/DOM (limite connue des
+ListView virtualisées côté Flutter Web) — on ne peut donc pas
+vérifier le contenu exact d'une carte via Selenium, seulement
+l'absence des messages d'état (erreur / liste vide) qui, eux,
+sont des Text simples toujours exposés.</doc>
+<status status="PASS" start="2026-07-31T13:48:56.786662" elapsed="3.157840"/>
+</kw>
+<tag>hotels</tag>
+<status status="PASS" start="2026-07-31T13:48:54.909910" elapsed="5.035055"/>
+</test>
+<test id="s1-s2-t3" name="Rechercher un hôtel par mot clé ne casse pas la page" line="18">
+<kw name="Go To Home" owner="ahime" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:48:59.947965" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${AHIME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:48:59.947666" elapsed="0.935602"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:00.884016" elapsed="0.080545"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:00.965161" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:49:00.964862" elapsed="0.446815"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:01.411850" elapsed="0.089497"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:49:00.883607" elapsed="0.617843"/>
+</kw>
+<doc>Revient à l'accueil (recharge l'app depuis zéro).</doc>
+<status status="PASS" start="2026-07-31T13:48:59.946838" elapsed="1.554659"/>
+</kw>
+<kw name="Open Category From Home" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${category_label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:01.501883" elapsed="0.025502"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:01.528014" level="INFO">Clicking element 'css:[aria-label*="Hôtels"]'.</msg>
+<arg>css:[aria-label*="${category_label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:49:01.527632" elapsed="0.182281"/>
+</kw>
+<arg>Hôtels</arg>
+<doc>Clique sur une carte de catégorie de l'accueil ("Hôtels", "Artisans", "Transports").</doc>
+<status status="PASS" start="2026-07-31T13:49:01.501666" elapsed="0.208351"/>
+</kw>
+<kw name="Wait Until Data Loaded" owner="ahime">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-07-31T13:49:04.711200" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-07-31T13:49:01.710390" elapsed="3.000932"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:04.736975" level="INFO">Current page does not contain text 'Échec du chargement'.</msg>
+<arg>Échec du chargement</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:49:04.711482" elapsed="0.025616"/>
+</kw>
+<doc>Attend la fin du chargement asynchrone (spinner) sur un écran de
+résultats. NOTE : le contenu des listes défilantes (cartes hôtel,
+artisan, transport...) est peint sur le &lt;canvas&gt; Flutter mais
+n'apparaît PAS dans l'arbre sémantique/DOM (limite connue des
+ListView virtualisées côté Flutter Web) — on ne peut donc pas
+vérifier le contenu exact d'une carte via Selenium, seulement
+l'absence des messages d'état (erreur / liste vide) qui, eux,
+sont des Text simples toujours exposés.</doc>
+<status status="PASS" start="2026-07-31T13:49:01.710183" elapsed="3.027057"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:04.738241" level="INFO">Typing text 'hotel' into text field 'css:input[aria-label="Rechercher par nom"]'.</msg>
+<arg>css:input[aria-label="Rechercher par nom"]</arg>
+<arg>hotel</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:49:04.737472" elapsed="0.271870"/>
+</kw>
+<kw name="Click By Aria Label" owner="ahime">
+<kw name="Wait Until Aria Label Visible" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:05.010817" elapsed="1.438942"/>
+</kw>
+<arg>${label}</arg>
+<doc>Attend qu'un élément portant ce libellé (exact ou partiel) soit visible.</doc>
+<status status="PASS" start="2026-07-31T13:49:05.010581" elapsed="1.439346"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:06.450559" level="INFO">Clicking element 'css:[aria-label*="OK"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:49:06.450108" elapsed="0.200329"/>
+</kw>
+<arg>OK</arg>
+<doc>Clique sur le premier élément dont le aria-label contient ${label}.</doc>
+<status status="PASS" start="2026-07-31T13:49:05.010209" elapsed="1.640527"/>
+</kw>
+<kw name="Wait Until Data Loaded" owner="ahime">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-07-31T13:49:09.652633" level="INFO">Slept 3 seconds.</msg>
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-07-31T13:49:06.651574" elapsed="3.001208"/>
+</kw>
+<kw name="Page Should Not Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:09.676514" level="INFO">Current page does not contain text 'Échec du chargement'.</msg>
+<arg>Échec du chargement</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:49:09.652991" elapsed="0.023711"/>
+</kw>
+<doc>Attend la fin du chargement asynchrone (spinner) sur un écran de
+résultats. NOTE : le contenu des listes défilantes (cartes hôtel,
+artisan, transport...) est peint sur le &lt;canvas&gt; Flutter mais
+n'apparaît PAS dans l'arbre sémantique/DOM (limite connue des
+ListView virtualisées côté Flutter Web) — on ne peut donc pas
+vérifier le contenu exact d'une carte via Selenium, seulement
+l'absence des messages d'état (erreur / liste vide) qui, eux,
+sont des Text simples toujours exposés.</doc>
+<status status="PASS" start="2026-07-31T13:49:06.651095" elapsed="3.025909"/>
+</kw>
+<tag>hotels</tag>
+<status status="PASS" start="2026-07-31T13:48:59.945751" elapsed="9.731755"/>
+</test>
+<kw name="Close Ahime App" owner="ahime" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-31T13:49:09.679866" elapsed="2.450106"/>
+</kw>
+<doc>Ferme le navigateur.</doc>
+<status status="PASS" start="2026-07-31T13:49:09.678981" elapsed="2.451268"/>
+</kw>
+<doc>Parcours Hôtels : Accueil -&gt; Hôtels -&gt; recherche -&gt; résultats.</doc>
+<status status="PASS" start="2026-07-31T13:48:43.554304" elapsed="28.576052"/>
+</suite>
+<suite id="s1-s3" name="Smoke" source="C:\Users\NKOUASSI\Documents\GitHub\ahime\test\robot\tests\smoke.robot">
+<kw name="Open Ahime App" owner="ahime" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-31T13:49:12.138781" level="INFO">${profile} = C:/Users/NKOUASSI/AppData/Local/Temp/tmp61vc3tlh</msg>
+<var>${profile}</var>
+<arg>__import__('tempfile').mkdtemp().replace("\\\\", "/")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-31T13:49:12.137012" elapsed="0.001866"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:12.139957" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:8080'.</msg>
+<arg>${AHIME_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--window-size=1280,900");add_argument("--disable-web-security");add_argument("--disable-site-isolation-trials");add_argument("--user-data-dir=${profile}")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:49:12.139335" elapsed="6.773445"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-07-31T13:49:18.913162" elapsed="0.002203"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:18.916140" elapsed="0.036542"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:18.954115" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:49:18.953659" elapsed="0.014035"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:18.968217" elapsed="1.836035"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:49:18.915783" elapsed="1.888783"/>
+</kw>
+<doc>Ouvre le navigateur sur l'app (sécurité web désactivée pour
+contourner l'absence de CORS sur l'API en environnement local)
+et active l'arbre sémantique Flutter.</doc>
+<status status="PASS" start="2026-07-31T13:49:12.136642" elapsed="8.668082"/>
+</kw>
+<test id="s1-s3-t1" name="L'accueil affiche le message de bienvenue" line="9">
+<kw name="Page Should Contain Text" owner="ahime">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:21.057943" level="INFO">Current page contains text 'Bienvenue sur Ahime'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:49:20.806516" elapsed="0.251666"/>
+</kw>
+<arg>Bienvenue sur Ahime</arg>
+<doc>Vérifie qu'un texte *statique* (titre, description, non cliquable)
+est présent. Ce texte apparaît dans le contenu de la page une fois
+l'arbre sémantique activé, mais pas forcément via aria-label : on
+s'appuie donc sur le texte affiché plutôt que sur un attribut.</doc>
+<status status="PASS" start="2026-07-31T13:49:20.805972" elapsed="0.252420"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" start="2026-07-31T13:49:20.804862" elapsed="0.253796"/>
+</test>
+<test id="s1-s3-t2" name="L'accueil affiche les trois catégories de service" line="12">
+<kw name="Page Should Contain Aria Label" owner="ahime">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:21.078607" level="INFO">Current page contains element 'css:[aria-label*="Hôtels"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.060372" elapsed="0.018466"/>
+</kw>
+<arg>Hôtels</arg>
+<doc>Vérifie qu'un élément *interactif* (bouton, carte, champ...) avec
+ce libellé (partiel) est présent. Ces éléments exposent leur texte
+via l'attribut aria-label une fois l'arbre sémantique activé.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.059906" elapsed="0.019129"/>
+</kw>
+<kw name="Page Should Contain Aria Label" owner="ahime">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:21.139615" level="INFO">Current page contains element 'css:[aria-label*="Artisans"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.080125" elapsed="0.059721"/>
+</kw>
+<arg>Artisans</arg>
+<doc>Vérifie qu'un élément *interactif* (bouton, carte, champ...) avec
+ce libellé (partiel) est présent. Ces éléments exposent leur texte
+via l'attribut aria-label une fois l'arbre sémantique activé.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.079426" elapsed="0.060579"/>
+</kw>
+<kw name="Page Should Contain Aria Label" owner="ahime">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:21.163129" level="INFO">Current page contains element 'css:[aria-label*="Transports"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.140770" elapsed="0.022572"/>
+</kw>
+<arg>Transports</arg>
+<doc>Vérifie qu'un élément *interactif* (bouton, carte, champ...) avec
+ce libellé (partiel) est présent. Ces éléments exposent leur texte
+via l'attribut aria-label une fois l'arbre sémantique activé.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.140320" elapsed="0.023199"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" start="2026-07-31T13:49:21.059129" elapsed="0.104623"/>
+</test>
+<kw name="Close Ahime App" owner="ahime" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.164939" elapsed="2.306650"/>
+</kw>
+<doc>Ferme le navigateur.</doc>
+<status status="PASS" start="2026-07-31T13:49:21.164542" elapsed="2.307242"/>
+</kw>
+<doc>Test de fumée : l'app se charge et l'arbre sémantique Flutter s'active.</doc>
+<status status="PASS" start="2026-07-31T13:49:12.131609" elapsed="11.340258"/>
+</suite>
+<suite id="s1-s4" name="Transports" source="C:\Users\NKOUASSI\Documents\GitHub\ahime\test\robot\tests\transports.robot">
+<kw name="Open Ahime App" owner="ahime" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-31T13:49:23.479266" level="INFO">${profile} = C:/Users/NKOUASSI/AppData/Local/Temp/tmp_75e1u6d</msg>
+<var>${profile}</var>
+<arg>__import__('tempfile').mkdtemp().replace("\\\\", "/")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-31T13:49:23.477377" elapsed="0.001989"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:23.480368" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:8080'.</msg>
+<arg>${AHIME_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--window-size=1280,900");add_argument("--disable-web-security");add_argument("--disable-site-isolation-trials");add_argument("--user-data-dir=${profile}")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:49:23.479740" elapsed="7.766013"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-07-31T13:49:31.246083" elapsed="0.003747"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:31.250831" elapsed="0.245492"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:31.497405" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:49:31.496905" elapsed="0.025811"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:31.523139" elapsed="1.830744"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:49:31.250372" elapsed="2.103707"/>
+</kw>
+<doc>Ouvre le navigateur sur l'app (sécurité web désactivée pour
+contourner l'absence de CORS sur l'API en environnement local)
+et active l'arbre sémantique Flutter.</doc>
+<status status="PASS" start="2026-07-31T13:49:23.476966" elapsed="9.877203"/>
+</kw>
+<test id="s1-s4-t1" name="Ouvrir Transports affiche les onglets Ligne et Compagnie" line="14">
+<kw name="Go To Home" owner="ahime" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:33.355417" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${AHIME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:49:33.355225" elapsed="4.185300"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:37.541327" elapsed="0.018142"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:37.560048" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:49:37.559781" elapsed="1.127759"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:38.687864" elapsed="0.112798"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:49:37.540898" elapsed="1.260035"/>
+</kw>
+<doc>Revient à l'accueil (recharge l'app depuis zéro).</doc>
+<status status="PASS" start="2026-07-31T13:49:33.354903" elapsed="5.446171"/>
+</kw>
+<kw name="Open Category From Home" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${category_label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:38.802077" elapsed="0.041119"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:38.844193" level="INFO">Clicking element 'css:[aria-label*="Transports"]'.</msg>
+<arg>css:[aria-label*="${category_label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:49:38.843555" elapsed="0.779161"/>
+</kw>
+<arg>Transports</arg>
+<doc>Clique sur une carte de catégorie de l'accueil ("Hôtels", "Artisans", "Transports").</doc>
+<status status="PASS" start="2026-07-31T13:49:38.801489" elapsed="0.821578"/>
+</kw>
+<kw name="Page Should Contain Aria Label" owner="ahime">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:39.963735" level="INFO">Current page contains element 'css:[aria-label*="Ligne"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:39.624529" elapsed="0.339366"/>
+</kw>
+<arg>Ligne</arg>
+<doc>Vérifie qu'un élément *interactif* (bouton, carte, champ...) avec
+ce libellé (partiel) est présent. Ces éléments exposent leur texte
+via l'attribut aria-label une fois l'arbre sémantique activé.</doc>
+<status status="PASS" start="2026-07-31T13:49:39.623686" elapsed="0.340351"/>
+</kw>
+<kw name="Page Should Contain Aria Label" owner="ahime">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:40.081462" level="INFO">Current page contains element 'css:[aria-label*="Compagnie"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:39.964945" elapsed="0.116705"/>
+</kw>
+<arg>Compagnie</arg>
+<doc>Vérifie qu'un élément *interactif* (bouton, carte, champ...) avec
+ce libellé (partiel) est présent. Ces éléments exposent leur texte
+via l'attribut aria-label une fois l'arbre sémantique activé.</doc>
+<status status="PASS" start="2026-07-31T13:49:39.964368" elapsed="0.117427"/>
+</kw>
+<tag>transports</tag>
+<status status="PASS" start="2026-07-31T13:49:33.354270" elapsed="6.727723"/>
+</test>
+<test id="s1-s4-t2" name="Basculer sur l'onglet Compagnie fonctionne" line="19">
+<kw name="Go To Home" owner="ahime" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:40.084121" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${AHIME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-07-31T13:49:40.083902" elapsed="2.178914"/>
+</kw>
+<kw name="Enable Flutter Semantics" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>tag:flt-semantics-placeholder</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:42.263574" elapsed="0.022137"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:42.286584" level="INFO">Executing JavaScript:
+document.querySelector('flt-semantics-placeholder').click();
+Without any arguments.</msg>
+<arg>document.querySelector('flt-semantics-placeholder').click();</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-07-31T13:49:42.285988" elapsed="0.915291"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:43.201714" elapsed="0.173404"/>
+</kw>
+<doc>Active l'arbre sémantique Flutter (le placeholder est masqué
+sous le &lt;canvas&gt; : un clic Selenium natif est intercepté, donc
+on le déclenche en JavaScript, comme le ferait un lecteur d'écran).</doc>
+<status status="PASS" start="2026-07-31T13:49:42.263201" elapsed="1.112134"/>
+</kw>
+<doc>Revient à l'accueil (recharge l'app depuis zéro).</doc>
+<status status="PASS" start="2026-07-31T13:49:40.083459" elapsed="3.291968"/>
+</kw>
+<kw name="Open Category From Home" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${category_label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:43.376265" elapsed="0.024790"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:43.402154" level="INFO">Clicking element 'css:[aria-label*="Transports"]'.</msg>
+<arg>css:[aria-label*="${category_label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:49:43.401433" elapsed="0.428019"/>
+</kw>
+<arg>Transports</arg>
+<doc>Clique sur une carte de catégorie de l'accueil ("Hôtels", "Artisans", "Transports").</doc>
+<status status="PASS" start="2026-07-31T13:49:43.375795" elapsed="0.453874"/>
+</kw>
+<kw name="Click By Aria Label" owner="ahime">
+<kw name="Wait Until Aria Label Visible" owner="ahime">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css:[aria-label*="${label}"]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2026-07-31T13:49:43.831530" elapsed="0.164850"/>
+</kw>
+<arg>${label}</arg>
+<doc>Attend qu'un élément portant ce libellé (exact ou partiel) soit visible.</doc>
+<status status="PASS" start="2026-07-31T13:49:43.831065" elapsed="0.165530"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:43.997301" level="INFO">Clicking element 'css:[aria-label*="Compagnie"]'.</msg>
+<arg>css:[aria-label*="${label}"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-31T13:49:43.996819" elapsed="0.811303"/>
+</kw>
+<arg>Compagnie</arg>
+<doc>Clique sur le premier élément dont le aria-label contient ${label}.</doc>
+<status status="PASS" start="2026-07-31T13:49:43.830520" elapsed="0.977807"/>
+</kw>
+<kw name="Page Should Contain Text" owner="ahime">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-07-31T13:49:45.630605" level="INFO">Current page contains text 'Destination par compagnie'.</msg>
+<arg>${text}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-07-31T13:49:44.809074" elapsed="0.821759"/>
+</kw>
+<arg>Destination par compagnie</arg>
+<doc>Vérifie qu'un texte *statique* (titre, description, non cliquable)
+est présent. Ce texte apparaît dans le contenu de la page une fois
+l'arbre sémantique activé, mais pas forcément via aria-label : on
+s'appuie donc sur le texte affiché plutôt que sur un attribut.</doc>
+<status status="PASS" start="2026-07-31T13:49:44.808633" elapsed="0.822409"/>
+</kw>
+<tag>transports</tag>
+<status status="PASS" start="2026-07-31T13:49:40.082509" elapsed="5.548823"/>
+</test>
+<kw name="Close Ahime App" owner="ahime" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-31T13:49:45.632807" elapsed="2.364376"/>
+</kw>
+<doc>Ferme le navigateur.</doc>
+<status status="PASS" start="2026-07-31T13:49:45.632407" elapsed="2.364971"/>
+</kw>
+<doc>Parcours Transports : Accueil -&gt; Transports -&gt; onglets Ligne/Compagnie.
+NOTE : comme pour Artisans, les champs de recherche (dropdowns
+"Ville de départ" etc.) viennent d'un composant tiers qui n'expose
+pas d'aria-label ; seuls les onglets (TabBar Material standard)
+sont fiablement automatisables ici. Voir README.md.</doc>
+<status status="PASS" start="2026-07-31T13:49:23.472874" elapsed="24.524563"/>
+</suite>
+<status status="PASS" start="2026-07-31T13:48:28.168694" elapsed="79.829885"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">artisans</stat>
+<stat pass="3" fail="0" skip="0">hotels</stat>
+<stat pass="2" fail="0" skip="0">smoke</stat>
+<stat pass="2" fail="0" skip="0">transports</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="9" fail="0" skip="0">Tests</stat>
+<stat name="Artisans" id="s1-s1" pass="2" fail="0" skip="0">Tests.Artisans</stat>
+<stat name="Hotels" id="s1-s2" pass="3" fail="0" skip="0">Tests.Hotels</stat>
+<stat name="Smoke" id="s1-s3" pass="2" fail="0" skip="0">Tests.Smoke</stat>
+<stat name="Transports" id="s1-s4" pass="2" fail="0" skip="0">Tests.Transports</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
