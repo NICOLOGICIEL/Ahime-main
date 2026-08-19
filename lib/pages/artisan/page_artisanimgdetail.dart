@@ -72,7 +72,7 @@ class PageArtisanimg extends StatelessWidget {
                   child: Hero(
                     tag: 'img${result['IDARTISANT']}',
                     child: myMemoryImage(
-                      imgBase64Dec(result['Photo']),
+                      imgBase64Dec(result['Photo'].toString()),
                       BoxFit.fill,
                       90,
                       90,
@@ -91,7 +91,7 @@ class PageArtisanimg extends StatelessWidget {
                 ),
               ),
               StarRating(
-                rating: double.parse(result['Tnote']),
+                rating: double.parse(result['Tnote'].toString()),
                 color: Colors.white,
                 size: 25,
               ),
@@ -213,7 +213,7 @@ class PageArtisanimg extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
-          txtDescription(result['Description']),
+          txtDescription(result['Description'].toString()),
         ],
       ),
     );

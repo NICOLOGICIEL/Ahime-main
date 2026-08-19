@@ -205,7 +205,7 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
           ),
           child: Column(
             children: [
-              txtTitrehotel('${result['Nom']} ${result['prenom']}'),
+              txtTitrehotel('${result['Nom'].toString()} ${result['prenom'].toString()}'),
               myDescription(context, SizeConfig.safeBlockHorizontal!,
                   SizeConfig.safeBlockVertical!, result)
             ],
@@ -228,7 +228,7 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
             child: Hero(
               tag: 'img${result['IDARTISANT']}',
               child: myMemoryImage(
-                imgBase64Dec(result['Photo']),
+                imgBase64Dec(result['Photo'].toString()),
                 BoxFit.fill,
                 90,
                 90,
@@ -247,15 +247,15 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                txtTitreVille(result['Ville']),
-                txtCommuneQuartier(result['Commune'], result['Quartier']),
+                txtTitreVille(result['Ville'].toString()),
+                txtCommuneQuartier(result['Commune'].toString(), result['Quartier']),
                 ntEtoile(
-                    note: double.parse(result['Tnote']),
+                    note: double.parse(result['Tnote'].toString()),
                     taille: 18,
                     myBorderColor: myColorBgGrey,
                     onChanged: (value) {}),
                 const SizedBox(height: 4),
-                lngDescription('telwb.png', result['Contact']),
+                lngDescription('telwb.png', result['Contact'].toString()),
                 const SizedBox(height: 4),
                 lngDescription('whawb.png', result['NumWhatApp']),
               ],

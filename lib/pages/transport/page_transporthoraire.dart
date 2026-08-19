@@ -79,18 +79,18 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
           child: Column(
             children: [
               SizedBox(height: 12),
-              txtTitreCompagine(result['Nom']),
+              txtTitreCompagine(result['Nom'].toString()),
               txtDistance(widget.distanceKM),
               txtNbrDepart((jsonData.length <= 1)
                   ? '${jsonData.length} Départ'
                   : '${jsonData.length} Départs'),
               SizedBox(height: myHeight * 1),
               desriptionGpsPhone(myWidth, result),
-              txtTitreVille(result['Ville']),
-              txtCommuneQuartier(result['Commune'], result['Quartier']),
-              lngDescription('telw.png', result['Contact']),
+              txtTitreVille(result['Ville'].toString()),
+              txtCommuneQuartier(result['Commune'].toString(), result['Quartier'].toString()),
+              lngDescription('telw.png', result['Contact'].toString()),
               txtVilleDepartArrivee(
-                  result['VilleDepart'], result['VilleArrivee']),
+                  result['VilleDepart'].toString(), result['VilleArrivee'].toString()),
             ],
           ),
         ),
@@ -220,9 +220,9 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               lngCommodite(
-                  'wifi', int.parse(result['Wifi']) == 1 ? true : false),
+                  'wifi', int.parse(result['Wifi'].toString()) == 1 ? true : false),
               lngCommodite('climatiseur',
-                  int.parse(result['Climatiseur']) == 1 ? true : false),
+                  int.parse(result['Climatiseur'].toString()) == 1 ? true : false),
             ],
           ),
           SizedBox(height: 5),
@@ -230,9 +230,9 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               lngCommodite('Pt Déjeuné',
-                  int.parse(result['petitDej']) == 1 ? true : false),
+                  int.parse(result['petitDej'].toString()) == 1 ? true : false),
               lngCommodite('toilette',
-                  int.parse(result['Toilette']) == 1 ? true : false),
+                  int.parse(result['Toilette'].toString()) == 1 ? true : false),
             ],
           ),
         ],
@@ -288,7 +288,7 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(result['HeureDepart'],
+        Text(result['HeureDepart'].toString(),
             style: TextStyle(
               color: myColorBlue,
               fontSize: 16,
@@ -309,7 +309,7 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: myColorGreen, width: 1),
             ),
-            child: Text(moneyFormat(result['Prix']),
+            child: Text(moneyFormat(result['Prix'].toString()),
                 style: TextStyle(
                   color: myColorGreen,
                   fontSize: 16,
@@ -338,14 +338,14 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
         children: [
           GestureDetector(
               onTap: () {
-                launchCALL(result['Contact']);
+                launchCALL(result['Contact'].toString());
               },
               child: Icon(Icons.phone, color: myColorGreenn, size: 40)),
           SizedBox(width: myWidth * 1),
           ClipRRect(
             borderRadius: BorderRadius.circular(5),
             child: myMemoryImage(
-              imgBase64Dec(result['Photo']),
+              imgBase64Dec(result['Photo'].toString()),
               BoxFit.fill,
               110,
               100,
@@ -354,12 +354,12 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
           SizedBox(width: myWidth * 1),
           GestureDetector(
             onTap: () {
-              glMAPS(double.parse(result['LatitudeComp']),
-                  double.parse(result['LongitudeComp']));
+              glMAPS(double.parse(result['LatitudeComp'].toString()),
+                  double.parse(result['LongitudeComp'].toString()));
             },
             onLongPress: () {
-              defMAPS(double.parse(result['LatitudeComp']),
-                  double.parse(result['LongitudeComp']));
+              defMAPS(double.parse(result['LatitudeComp'].toString()),
+                  double.parse(result['LongitudeComp'].toString()));
             },
             child: Image.asset(
               '$imageUri/gps.png',
@@ -489,7 +489,8 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
   }
 
   String fxReq() {
-    return myReqHoraire(x1: int.parse(widget.dataP['IDLIGNETRANSPORT']));
+    var id = widget.dataP['IDLIGNETRANSPORT'];
+    return myReqHoraire(x1: id is int ? id : int.parse(id.toString()));
   }
 
   Future<void> postdataEscale({required String req1, String req2 = ''}) async {
@@ -527,7 +528,7 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
     SizeConfig().init(context);
     var myHeight = SizeConfig.safeBlockVertical!;
     var myWidth = SizeConfig.safeBlockHorizontal!;
-    var idDep = int.parse(result['IDDEPART']);
+    var idDep = int.parse(result['IDDEPART'].toString());
 
     escaleControl.onClose();
 
@@ -553,7 +554,7 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
             children: [
               myHead(context, index, widget.dataP),
               SizedBox(height: 10),
-              myHours(result['HeureDepart']),
+              myHours(result['HeureDepart'].toString()),
               SizedBox(height: 10),
               myBoby(context, myWidth, myHeight),
             ],
@@ -641,7 +642,7 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
-        result['Localite'],
+        result['Localite'].toString(),
         style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -681,7 +682,7 @@ class _PageTransportHoraireState extends State<PageTransportHoraire> {
                 ),
               ),
               txtVilleDepartArrivee(
-                  result['VilleDepart'], result['VilleArrivee'],
+                  result['VilleDepart'].toString(), result['VilleArrivee'].toString(),
                   myfontSize: 14),
               SizedBox(height: 2)
             ],

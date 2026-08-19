@@ -194,7 +194,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
       ),
       child: Column(
         children: [
-          txtTitrehotel(result['Nom']),
+          txtTitrehotel(result['Nom'].toString()),
           wgdCommodite(result),
           myNotecall(context, result),
         ],
@@ -241,8 +241,8 @@ class _PageTransportResultState extends State<PageTransportResult> {
             context,
             PageTransportHoraire(
                 dataP: result,
-                distanceKM: getDistanceKM(double.parse(result['LatitudeComp']),
-                    double.parse(result['LongitudeComp']))));
+                distanceKM: getDistanceKM(double.parse(result['LatitudeComp'].toString()),
+                    double.parse(result['LongitudeComp'].toString()))));
       },
       child: Container(
         height: myhaut,
@@ -264,7 +264,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: myMemoryImage(
-                  imgBase64Dec(result['Photo']),
+                  imgBase64Dec(result['Photo'].toString()),
                   BoxFit.fill,
                   90,
                   90,
@@ -277,13 +277,13 @@ class _PageTransportResultState extends State<PageTransportResult> {
                 height: myhaut,
                 child: Column(
                   children: [
-                    txtTitreVille(result['Ville']),
-                    txtCommuneQuartier(result['Commune'], result['Quartier']),
+                    txtTitreVille(result['Ville'].toString()),
+                    txtCommuneQuartier(result['Commune'].toString(), result['Quartier'].toString()),
                     nbrEtoile(0),
                     txtVilleDepartArrivee(
-                        result['VilleDepart'], result['VilleArrivee']),
+                        result['VilleDepart'].toString(), result['VilleArrivee'].toString()),
                     SizedBox(height: 14),
-                    lngDescription('tel.png', result['Contact']),
+                    lngDescription('tel.png', result['Contact'].toString()),
                   ],
                 ),
               ),
@@ -297,12 +297,12 @@ class _PageTransportResultState extends State<PageTransportResult> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      glMAPS(double.parse(result['LatitudeComp']),
-                          double.parse(result['LongitudeComp']));
+                      glMAPS(double.parse(result['LatitudeComp'].toString()),
+                          double.parse(result['LongitudeComp'].toString()));
                     },
                     onLongPress: () {
-                      defMAPS(double.parse(result['LatitudeComp']),
-                          double.parse(result['LongitudeComp']));
+                      defMAPS(double.parse(result['LatitudeComp'].toString()),
+                          double.parse(result['LongitudeComp'].toString()));
                     },
                     child: Image.asset(
                       '$imageUri/gps.png',
@@ -313,7 +313,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
                   const SizedBox(height: 1),
                   Text(
                     gpsPermission
-                        ? '${getDistanceKM(double.parse(result['LatitudeComp']), double.parse(result['LongitudeComp'])).round()} km'
+                        ? '${getDistanceKM(double.parse(result['LatitudeComp'].toString()), double.parse(result['LongitudeComp'].toString())).round()} km'
                         : '',
                     style: TextStyle(
                       color: myColorBlue,
@@ -395,7 +395,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
       children: [
         GestureDetector(
           onTap: () {
-            launchCALL(result['Contact']);
+            launchCALL(result['Contact'].toString());
           },
           child: CircleAvatar(
             radius: 23,
@@ -414,8 +414,8 @@ class _PageTransportResultState extends State<PageTransportResult> {
                 PageTransportHoraire(
                     dataP: result,
                     distanceKM: getDistanceKM(
-                        double.parse(result['LatitudeComp']),
-                        double.parse(result['LongitudeComp']))));
+                        double.parse(result['LatitudeComp'].toString()),
+                        double.parse(result['LongitudeComp'].toString()))));
           },
           child: CircleAvatar(
             radius: 23,

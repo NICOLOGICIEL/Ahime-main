@@ -29,8 +29,8 @@ const Color myColorGreenn = Color(0xFF35d852);
 
 //adresse API
 // ignore: constant_identifier_names
-const String APIServeur = "http://localhost:8000";
-const String apiBaseURL = "localhost";
+const String APIServeur = "http://192.168.1.127";
+const String apiBaseURL = "192.168.1.127";
 var endpoint = '/api/action';
 var endpointINI = '/api';
 final apiurl = '$APIServeur$endpoint';
@@ -326,7 +326,7 @@ Future<List> getData(String enpoint) async {
 
 //envoyer une requête POST
 Future<List> postData(String data, String enpoint) async {
-  final url = Uri.https(apiBaseURL, enpoint);
+  final url = Uri.parse('$APIServeur$enpoint');
   var headers = {'Content-Type': 'application/json; charset=UTF-8'};
 
   final response = await client.post(
@@ -733,6 +733,7 @@ class MyBrowserViewState extends State<MyBrowserView> {
 }
 
 myPub({required String myUrl}) {
+  if (kIsWeb) return MyBrowser(myUrl: myUrl);
   return isMobile() ? MyBrowserView(myUrl: myUrl) : MyBrowser(myUrl: myUrl);
 }
 
