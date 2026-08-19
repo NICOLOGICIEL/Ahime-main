@@ -29,8 +29,8 @@ const Color myColorGreenn = Color(0xFF35d852);
 
 //adresse API
 // ignore: constant_identifier_names
-const String APIServeur = "http://192.168.1.127";
-const String apiBaseURL = "192.168.1.127";
+const String APIServeur = "https://www.ahime-ci.com";
+const String apiBaseURL = "www.ahime-ci.com";
 var endpoint = '/api/action';
 var endpointINI = '/api';
 final apiurl = '$APIServeur$endpoint';

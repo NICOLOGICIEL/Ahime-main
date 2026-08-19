@@ -113,7 +113,7 @@ class _PageHotelRechercheState extends State<PageHotelRecherche> {
   @override
   void initState() {
     super.initState();
-    txtPrixcontroller.clear();
+    txtPrixcontroller.text = '0';
   }
 
   @override
