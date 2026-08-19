@@ -5,6 +5,7 @@ import 'package:ahime/pages/hotel/page_hotel.dart';
 import 'package:ahime/pages/transport/page_transport.dart';
 import 'package:ahime/config/utils/resizable.dart';
 import 'package:ahime/config/my_config.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PageAccueil extends StatelessWidget {
   const PageAccueil({super.key});
@@ -17,6 +18,76 @@ class PageAccueil extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: myColorBlue,
+      drawer: Drawer(
+        width: MediaQuery.of(context).size.width * 0.75,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
+        child: Column(
+          children: [
+            _buildDrawerHeader(context),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                physics: const BouncingScrollPhysics(),
+                children: [
+                  _buildDrawerItem(
+                    context,
+                    title: 'Accueil',
+                    icon: Icons.home_rounded,
+                    onTap: () {
+                      popPage(context);
+                    },
+                  ),
+                  const SizedBox(height: 6),
+                  _buildDrawerItem(
+                    context,
+                    title: 'Transport',
+                    icon: Icons.directions_bus_rounded,
+                    onTap: () {
+                      popPage(context);
+                      pushPage(context, const PageTransport());
+                    },
+                  ),
+                  const SizedBox(height: 6),
+                  _buildDrawerItem(
+                    context,
+                    title: 'Hôtel',
+                    icon: Icons.hotel_rounded,
+                    onTap: () {
+                      popPage(context);
+                      pushPage(context, PageHotel());
+                    },
+                  ),
+                  const SizedBox(height: 6),
+                  _buildDrawerItem(
+                    context,
+                    title: 'Artisan',
+                    icon: Icons.handyman_rounded,
+                    onTap: () {
+                      popPage(context);
+                      pushPage(context, const PageArtisan());
+                    },
+                  ),
+                  const SizedBox(height: 6),
+                  _buildDrawerItem(
+                    context,
+                    title: 'Immobilier',
+                    icon: Icons.apartment_rounded,
+                    onTap: () {
+                      popPage(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
+            _buildDrawerFooter(context),
+          ],
+        ),
+      ),
       body: DoubleBackToCloseApp(
         //snackBar:fnSnackmsg(context, 'Appuyez à nouveau sur retour pour quitter'),
         snackBar: SnackBar(
@@ -274,7 +345,9 @@ class headBar extends StatelessWidget {
                 color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Scaffold.of(context).openDrawer();
+            },
             child: SizedBox(
               child: Image.asset('$imageUri/IcMenu.png', width: 30, height: 30),
             ),
@@ -316,4 +389,170 @@ class logoSociete extends StatelessWidget {
       child: Image.asset(imagePath, fit: BoxFit.fill),
     );
   }
+}
+
+Widget _buildDrawerHeader(BuildContext context) {
+  return Container(
+    width: MediaQuery.of(context).size.width,
+    decoration: const BoxDecoration(
+      color: myColorBlue,
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(20),
+      ),
+    ),
+    child: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.15),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.person_rounded,
+                color: Colors.white,
+                size: 32,
+              ),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Bienvenue',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              'Decouvrez nos services',
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.85),
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget _buildDrawerItem(
+  BuildContext context, {
+  required String title,
+  required IconData icon,
+  required VoidCallback onTap,
+}) {
+  return InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(16),
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.04),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: myColorBlueLight,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: myColorBlue, size: 22),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+          Icon(Icons.chevron_right_rounded, color: Colors.grey.shade400, size: 20),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _buildDrawerFooter(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+    decoration: BoxDecoration(
+      color: myColorBlueLight,
+      borderRadius: const BorderRadius.only(
+        bottomRight: Radius.circular(20),
+      ),
+    ),
+    child: Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _socialIcon(context, '$imageUri/Face.png', 'Facebook'),
+            const SizedBox(width: 12),
+            _socialIcon(context, '$imageUri/what.png', 'WhatsApp'),
+            const SizedBox(width: 12),
+            _socialIcon(context, '$imageUri/insta.png', 'Instagram'),
+            const SizedBox(width: 12),
+            _socialIcon(context, '$imageUri/x.png', 'X'),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Text(
+          'Copyright © 2023 Gek expertise',
+          style: TextStyle(
+            color: Colors.grey.shade600,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _socialIcon(BuildContext context, String assetPath, String label) {
+  return InkWell(
+    onTap: () async {
+      final urls = {
+        'Facebook': 'https://www.facebook.com/ahimeci',
+        'WhatsApp': 'https://wa.me/22500000000',
+        'Instagram': 'https://www.instagram.com/ahimeci',
+        'X': 'https://x.com/ahimeci',
+      };
+      final url = Uri.parse(urls[label] ?? 'https://www.ahime-ci.com');
+      if (await canLaunchUrl(url)) {
+        launchURL(url);
+      }
+    },
+    borderRadius: BorderRadius.circular(12),
+    child: Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Image.asset(assetPath, width: 22, height: 22),
+    ),
+  );
 }
