@@ -12,5 +12,6 @@
         "statusBar.noFolderBackground": "#0F3046",
         "statusBar.noFolderForeground": "#F6FAFD"
     },
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "postman.settings.dotenv-detection-notification-visibility": false
 }

@@ -70,24 +70,34 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   #flutter_lints: ^5.0.0
   #flutter_native_splash: ^2.4.3
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/image/AhimeLogo1024.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/image/AhimeLogoIcon12.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 flutter_native_splash:
-  color: "#02893c"
-  #image: "assets/image/AhimeLogo.png"
-  background_image: "assets/image/ScreenSlash.png"
+  color: "#FFFFFF"
+  color_dark: "#0E1116"
+  image: "assets/image/AhimeLogoTransparent.png"
+  image_dark: "assets/image/AhimeLogoTransparent.png"
   android_12:
-    color: "#02893c"
-    background_image: "assets/image/ScreenSlash.png"
-    image: "assets/image/AhimeLogo.png"
-    image_dark: "assets/image/ScreenSlash12.png"
-
-  background_image_android: "assets/image/ScreenSlash.png"
-  background_image_dark_android: "assets/image/ScreenSlash.png"
-  background_image_ios: "assets/image/ScreenSlash.png"
-  background_image_dark_ios: "assets/image/ScreenSlash.png"
+    color: "#FFFFFF"
+    color_dark: "#0E1116"
+    image: "assets/image/AhimeLogoIcon12.png"
+    image_dark: "assets/image/AhimeLogoIcon12.png"
+  android: true
+  ios: true
+  web: false
+  fullscreen: true
 
 # The following section is specific to Flutter packages.
 flutter:

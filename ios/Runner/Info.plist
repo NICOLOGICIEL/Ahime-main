@@ -54,13 +54,15 @@
 			<string>sms</string>
 			<string>file</string>
 		</array>
-		<key>NSLocationAlwaysUsageDescription</key>
-		<string>...</string>
-		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-		<string>...</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>...</string>
+		<string>Ahime utilise votre position pour vous proposer les transports, hôtels et artisans les plus proches de vous.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Ahime peut avoir besoin d'accéder à l'appareil photo pour joindre une photo lors de l'utilisation de certains services.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Ahime peut avoir besoin d'accéder à vos photos pour joindre une image lors de l'utilisation de certains services.</string>
 		<key>UIStatusBarHidden</key>
+		<true/>
+		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
 	</dict>
 </plist>

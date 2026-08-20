@@ -11,3 +11,7 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Gradle distribution zips (100-200MB each) used to work around a local
+# network/proxy issue — never commit these, Gradle re-downloads as needed.
+gradle/wrapper/*.zip
