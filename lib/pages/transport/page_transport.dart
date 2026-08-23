@@ -51,8 +51,9 @@ class PageTransport extends StatelessWidget {
                           ),
                         ),
                       ),
-                      //myPub(myUrl: 'https://ahime-ci.com/pubhotel'),
-                     const SlideImg(imgPath: '$imageUri/pubads.jpg', title: ''),
+                      //myPub(myUrl: 'slideshow/pubtransport/index.html'),
+                      const SlideImg(
+                          imgPath: '$imageUri/pubads.jpg', title: ''),
                     ],
                   ),
                 ),
@@ -290,5 +291,4 @@ class tabCtnMenuState extends State<tabCtnMenu> with TickerProviderStateMixin {
       }
     });
   }
-
 }

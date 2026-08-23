@@ -31,7 +31,8 @@ class PageAccueil extends StatelessWidget {
             _buildDrawerHeader(context),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 physics: const BouncingScrollPhysics(),
                 children: [
                   _buildDrawerItem(
@@ -108,7 +109,8 @@ class PageAccueil extends StatelessWidget {
                   SizedBox(height: myHeight * 1),
                   headBar(),
                   SizedBox(height: myHeight * 1),
-                  myPub(myUrl: 'https://ahime-ci.com/slideshow'),
+                  myPub(myUrl: 'slideshow/index.html'),
+                  // myPub(myUrl: 'https://ahime-ci.com/slideshow'),
                   SizedBox(height: myHeight * 1),
                   textCategorie(),
                   SizedBox(height: myHeight * 1),
@@ -487,7 +489,8 @@ Widget _buildDrawerItem(
               ),
             ),
           ),
-          Icon(Icons.chevron_right_rounded, color: Colors.grey.shade400, size: 20),
+          Icon(Icons.chevron_right_rounded,
+              color: Colors.grey.shade400, size: 20),
         ],
       ),
     ),
