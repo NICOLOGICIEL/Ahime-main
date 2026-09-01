@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Ahime Slideshow</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
@@ -14,11 +13,20 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: linear-gradient(135deg, #023a6b, #0050a0);
     }
-    .swiper {
+    .slider {
       width: 100%;
       height: 100%;
+      position: relative;
+      overflow: hidden;
     }
-    .swiper-slide {
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.6s ease;
+    }
+    .slide {
+      min-width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -28,10 +36,14 @@
       background: linear-gradient(135deg, #023a6b, #0050a0);
       padding: 16px;
     }
-    .slide-icon {
-      font-size: 32px;
-      margin-bottom: 8px;
-      opacity: 0.95;
+    .slide img {
+      width: 100%;
+      max-width: 320px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     }
     .slide-title {
       font-size: 18px;
@@ -39,49 +51,52 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
-    .swiper-pagination-bullet {
+    .dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
       background: #ffffff;
       opacity: 0.4;
+      cursor: pointer;
+      transition: opacity 0.3s;
     }
-    .swiper-pagination-bullet-active {
-      background: #35d852;
+    .dot.active {
       opacity: 1;
+      background: #35d852;
     }
   </style>
 </head>
 <body>
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <div class="slide-icon">🚌</div>
+  <div class="slider" id="slider">
+    <div class="slides" id="slides">
+      <div class="slide">
+        <img src="Slash.jpeg" alt="Transport">
         <div class="slide-title">Transport</div>
       </div>
-      <div class="swiper-slide">
-        <div class="slide-icon">🏨</div>
+      <div class="slide">
+        <img src="Slash.jpeg" alt="Hôtel">
         <div class="slide-title">Hôtel</div>
       </div>
-      <div class="swiper-slide">
-        <div class="slide-icon">🔧</div>
+      <div class="slide">
+        <img src="Slash.jpeg" alt="Artisan">
         <div class="slide-title">Artisan</div>
       </div>
-      <div class="swiper-slide">
-        <div class="slide-icon">🏢</div>
+      <div class="slide">
+        <img src="Slash.jpeg" alt="Immobilier">
         <div class="slide-title">Immobilier</div>
       </div>
     </div>
-    <div class="swiper-pagination"></div>
+    <div class="dots" id="dots"></div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    new Swiper('.swiper', {
-      effect: 'slide',
-      loop: true,
-      grabCursor: true,
-      autoplay: { delay: 2500, disableOnInteraction: false },
-      speed: 600,
-      pagination: { el: '.swiper-pagination', clickable: true },
-    });
-  </script>
+  <script src="slider.js"></script>
 </body>
 </html>
