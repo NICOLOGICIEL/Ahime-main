@@ -90,7 +90,6 @@ class PageAccueil extends StatelessWidget {
         ),
       ),
       body: DoubleBackToCloseApp(
-        //snackBar:fnSnackmsg(context, 'Appuyez à nouveau sur retour pour quitter'),
         snackBar: SnackBar(
             backgroundColor: Colors.black.withValues(alpha: 0.5),
             margin: const EdgeInsets.all(5),
@@ -103,24 +102,29 @@ class PageAccueil extends StatelessWidget {
             width: myWidth * 100,
             height: myHeight * 100,
             color: myColorWhite,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: myHeight * 1),
-                  headBar(),
-                  SizedBox(height: myHeight * 1),
-                  myPub(myUrl: 'slideshow/index.html'),
-                  // myPub(myUrl: 'https://ahime-ci.com/slideshow'),
-                  SizedBox(height: myHeight * 1),
-                  textCategorie(),
-                  SizedBox(height: myHeight * 1),
-                  listCategorie(),
-                  textNosPartenaire(myHeight),
-                  logoSociete(),
-                  SizedBox(height: myHeight * 3),
-                  MyFooter(),
-                ],
-              ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(height: myHeight * 1),
+                        headBar(),
+                        SizedBox(height: myHeight * 1),
+                        myPub(myUrl: 'slideshow/index.html'),
+                        SizedBox(height: myHeight * 1),
+                        textCategorie(),
+                        SizedBox(height: myHeight * 1),
+                        listCategorie(),
+                        textNosPartenaire(myHeight),
+                        logoSociete(),
+                        SizedBox(height: myHeight * 3),
+                      ],
+                    ),
+                  ),
+                ),
+                MyFooter(),
+              ],
             ),
           ),
         ),

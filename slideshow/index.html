@@ -1,33 +1,50 @@
 ﻿<!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Ahime Slideshow</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
       width: 100%;
       height: 100%;
+      margin: 0;
+      padding: 0;
       overflow: hidden;
+    }
+
+    body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: linear-gradient(135deg, #023a6b, #0050a0);
     }
+
     .slider {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       position: relative;
       overflow: hidden;
       touch-action: pan-y;
     }
+
     .slides {
       display: flex;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
+
     .slide {
-      min-width: 100%;
-      height: 100%;
+      min-width: 100vw;
+      width: 100vw;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -35,35 +52,32 @@
       text-align: center;
       color: #ffffff;
       background: linear-gradient(135deg, #023a6b, #0050a0);
-      padding: 16px;
+      padding: 0;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
     }
+
     .slide img {
-      width: 100%;
-      max-width: 320px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      width: 100vw;
+      height: 100vh;
+      object-fit: fill;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
       user-select: none;
       -webkit-user-drag: none;
     }
+
     .slide-title {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      display: none;
     }
+
     .dots {
-      position: absolute;
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 10;
+      display: none;
     }
+
     .dot {
       width: 10px;
       height: 10px;
@@ -75,7 +89,11 @@
       border: none;
       padding: 0;
     }
-    .dot:hover { transform: scale(1.2); }
+
+    .dot:hover {
+      transform: scale(1.2);
+    }
+
     .dot.active {
       opacity: 1;
       background: #35d852;
@@ -83,6 +101,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="slider" id="slider">
     <div class="slides" id="slides">
@@ -90,7 +109,7 @@
         <img src="Slash.jpeg" alt="Transport">
         <div class="slide-title">Transport</div>
       </div>
-      <div class="slide">
+      <!-- <div class="slide">
         <img src="Slash.jpeg" alt="Hôtel">
         <div class="slide-title">Hôtel</div>
       </div>
@@ -101,11 +120,12 @@
       <div class="slide">
         <img src="Slash.jpeg" alt="Immobilier">
         <div class="slide-title">Immobilier</div>
-      </div>
+    </div> -->
     </div>
     <div class="dots" id="dots"></div>
   </div>
 
   <script src="slider.js"></script>
 </body>
+
 </html>

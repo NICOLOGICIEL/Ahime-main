@@ -681,12 +681,17 @@ class MyBrowserState extends State<MyBrowser> {
     SizeConfig().init(context);
     var myWidth = SizeConfig.safeBlockHorizontal!;
 
+    final url = widget.myUrl;
+    final uri = (url.startsWith('http://') || url.startsWith('https://'))
+        ? WebUri(url)
+        : WebUri('file://$url');
+
     return Container(
       width: myWidth * 95,
       height: 262.5,
       color: myColorBlue,
       child: InAppWebView(
-        initialUrlRequest: URLRequest(url: WebUri(widget.myUrl)),
+        initialUrlRequest: URLRequest(url: uri),
         onWebViewCreated: (InAppWebViewController controller) {
           _webViewController = controller;
         },
@@ -720,8 +725,16 @@ class MyBrowserViewState extends State<MyBrowserView> {
     var myWidth = SizeConfig.safeBlockHorizontal!;
 
     var controller = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse(widget.myUrl));
+      ..setJavaScriptMode(JavaScriptMode.unrestricted);
+
+    final url = widget.myUrl;
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      controller.loadRequest(Uri.parse(url));
+    } else if (url.startsWith('file://')) {
+      controller.loadFile(url.substring(7));
+    } else {
+      controller.loadFlutterAsset(url);
+    }
 
     return Container(
       width: myWidth * 95,

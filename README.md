@@ -1,17 +1,57 @@
-# ahime
+# Ahime
 
-Ahime project.
+Application Flutter - Plateforme de services (Transport, Hôtelleris, Artisanat, Immobilier).
 
-## Getting Started
+## Structure du projet
 
-This project is a starting point for a Flutter application.
+```
+lib/
+├── main.dart
+└── pages/
+    ├── page_accueil.dart
+    ├── slideshow/page_slideshow.dart
+    └── transport/page_transport.dart
 
-A few resources to get you started if this is your first Flutter project:
+slideshow/
+├── index.html      # Slideshow plein écran avec effets SwiperJS
+├── slider.js       # Moteur de slides (slide, fade, cube, coverflow, flip, cards, creative)
+└── Slash.jpeg      # Asset image
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Slideshow
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# Ahime-main" 
+Le slideshow intègre les principaux effets SwiperJS :
+
+| Effet | Description |
+|-------|-------------|
+| `slide` | Défilement horizontal |
+| `fade` | Fondu enchaîné |
+| `cube` | Rotation 3D en cube |
+| `coverflow` | Carrousel avec profondeur |
+| `flip` | Retournement 3D |
+| `cards` | Empilement de cartes |
+| `creative` | Animation créative avec clip-path |
+
+L'effet par défaut peut être défini via l'URL : `?effect=cube`
+
+## Lancement
+
+```bash
+# Chrome
+flutter run -d chrome
+
+# Android
+flutter run
+```
+
+## Déploiement
+
+L'application est prête pour le déploiement sur :
+- Web (Chrome, Edge, Firefox, Safari)
+- Android (APK / Play Store)
+- iOS
+
+## Ressources
+
+- [Flutter documentation](https://docs.flutter.dev/)
+- [SwiperJS](https://swiperjs.com/)
