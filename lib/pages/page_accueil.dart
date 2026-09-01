@@ -164,12 +164,12 @@ class listCategorie extends StatelessWidget {
             }),
             sizeSpace(),
             cardCategorie('ARTISAN', '$imageUri/artisan.png', 70, 70, () {
-              pushPage(context, PageArtisan());
+              pushPage(context, const PageArtisan());
             }),
             sizeSpace(),
-            cardCategorie(
-                'IMMOBILIER', '$imageUri/immobilier.png', 50, 60, () {}),
-            sizeSpace(),
+            // cardCategorie(
+            //     'IMMOBILIER', '$imageUri/immobilier.png', 50, 60, () {}),
+            //sizeSpace(),
           ],
         ),
       ),
