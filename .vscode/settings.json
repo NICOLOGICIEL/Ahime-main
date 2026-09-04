@@ -13,5 +13,6 @@
         "statusBar.noFolderForeground": "#F6FAFD"
     },
     "python-envs.defaultEnvManager": "ms-python.python:system",
-    "postman.settings.dotenv-detection-notification-visibility": false
+    "postman.settings.dotenv-detection-notification-visibility": false,
+    "git.ignoreLimitWarning": true
 }
