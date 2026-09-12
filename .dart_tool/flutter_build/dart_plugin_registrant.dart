@@ -16,6 +16,7 @@ import 'package:geolocator_apple/geolocator_apple.dart' as geolocator_apple;
 import 'package:path_provider_foundation/path_provider_foundation.dart' as path_provider_foundation;
 import 'package:url_launcher_ios/url_launcher_ios.dart' as url_launcher_ios;
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart' as webview_flutter_wkwebview;
+import 'package:device_info_plus/device_info_plus.dart' as device_info_plus;
 import 'package:path_provider_linux/path_provider_linux.dart' as path_provider_linux;
 import 'package:url_launcher_linux/url_launcher_linux.dart' as url_launcher_linux;
 import 'package:flutter_inappwebview_macos/flutter_inappwebview_macos.dart' as flutter_inappwebview_macos;
@@ -23,6 +24,7 @@ import 'package:geolocator_apple/geolocator_apple.dart' as geolocator_apple;
 import 'package:path_provider_foundation/path_provider_foundation.dart' as path_provider_foundation;
 import 'package:url_launcher_macos/url_launcher_macos.dart' as url_launcher_macos;
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart' as webview_flutter_wkwebview;
+import 'package:device_info_plus/device_info_plus.dart' as device_info_plus;
 import 'package:flutter_inappwebview_windows/flutter_inappwebview_windows.dart' as flutter_inappwebview_windows;
 import 'package:path_provider_windows/path_provider_windows.dart' as path_provider_windows;
 import 'package:url_launcher_windows/url_launcher_windows.dart' as url_launcher_windows;
@@ -126,6 +128,15 @@ class _PluginRegistrant {
 
     } else if (Platform.isLinux) {
       try {
+        device_info_plus.DeviceInfoPlusLinuxPlugin.registerWith();
+      } catch (err) {
+        print(
+          '`device_info_plus` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
+      try {
         path_provider_linux.PathProviderLinux.registerWith();
       } catch (err) {
         print(
@@ -190,6 +201,15 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isWindows) {
+      try {
+        device_info_plus.DeviceInfoPlusWindowsPlugin.registerWith();
+      } catch (err) {
+        print(
+          '`device_info_plus` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
       try {
         flutter_inappwebview_windows.WindowsInAppWebViewPlatform.registerWith();
       } catch (err) {

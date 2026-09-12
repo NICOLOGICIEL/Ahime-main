@@ -73,15 +73,6 @@ class PageAccueil extends StatelessWidget {
                       pushPage(context, const PageArtisan());
                     },
                   ),
-                  const SizedBox(height: 6),
-                  _buildDrawerItem(
-                    context,
-                    title: 'Immobilier',
-                    icon: Icons.apartment_rounded,
-                    onTap: () {
-                      popPage(context);
-                    },
-                  ),
                 ],
               ),
             ),

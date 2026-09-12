@@ -21,10 +21,12 @@ class DebugHttpOverrides extends HttpOverrides {
   }
 }
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   if (kDebugMode) {
     HttpOverrides.global = DebugHttpOverrides();
   }
+  await initAPIServer();
   runApp(const MyApp());
 }
 

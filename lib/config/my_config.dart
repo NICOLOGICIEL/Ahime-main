@@ -16,6 +16,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 //css
 const Color myColorBlue = Color(0xFF023a6b);
@@ -30,14 +31,49 @@ const Color myColorGreenLight = Color(0xFFe9fdfe);
 const Color myColorGreenn = Color(0xFF35d852);
 
 //adresse API
+// Résultat de la détection asynchrone d'un appareil Android physique
+// (voir initAPIServer). Reste null sur émulateur, web, iOS et desktop :
+// APIServeur retombe alors sur son cas "localhost".
+String? _apiServeurOverride;
+
+/// A appeler une fois au démarrage (voir main.dart) pour distinguer, sur
+/// Android, un appareil physique d'un émulateur. Ne fait rien sur les
+/// autres plateformes : le getter APIServeur gère déjà leur cas "localhost".
+Future<void> initAPIServer() async {
+  if (kIsWeb || !Platform.isAndroid) return;
+
+  try {
+    final androidInfo = await DeviceInfoPlugin().androidInfo;
+    if (androidInfo.isPhysicalDevice) {
+      // Téléphone Android physique : utiliser l'IP du PC sur le réseau Wi-Fi.
+      // Pour le développement local, remplacer par http://<IP_LOCALE>/apiAhime
+      // Exemple : _apiServeurOverride = "http://192.168.1.100/apiAhime";
+      _apiServeurOverride = "https://www.ahime-ci.com";
+    }
+    // Sinon : émulateur, la valeur par défaut (10.0.2.2) reste correcte.
+  } catch (_) {
+    // Détection impossible : on garde la valeur par défaut de l'émulateur.
+  }
+}
+
 // ignore: constant_identifier_names
 String get APIServeur {
-  // L'émulateur Android voit son propre "localhost" ; 10.0.2.2 route vers l'hôte.
-  if (!kIsWeb && Platform.isAndroid) {
-    return "http://10.0.2.2/apiAhime";
+  if (_apiServeurOverride != null) return _apiServeurOverride!;
+
+  if (kIsWeb) {
+    // Web : le navigateur et le serveur API tournent sur la même machine.
+    return "http://localhost/apiAhime";
   }
-  return "http://localhost/apiAhime";
+  if (!Platform.isAndroid) {
+    // iOS, Windows, macOS, Linux : environnement de développement local.
+    return "http://localhost/apiAhime";
+  }
+  // Android : par défaut on suppose un émulateur, qui voit l'hôte (donc son
+  // "localhost") via l'adresse spéciale 10.0.2.2 (voir initAPIServer pour
+  // le cas d'un appareil physique).
+  return "http://10.0.2.2/apiAhime";
 }
+
 //const String APIServeur = "https://www.ahime-ci.com";
 //const String apiBaseURL = "www.ahime-ci.com";
 // API Key - loaded from secret.dart
@@ -53,8 +89,7 @@ const fontsUri = 'assets/fonts';
 
 // Helper function to create Dio instance with API key header
 Dio createDioWithKey() {
-  final dio = Dio()
-    ..options.headers['X-API-Key'] = secret.kXApiKey;
+  final dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
   return dio;
 }
 
@@ -709,16 +744,24 @@ class MyBrowserState extends State<MyBrowser> {
     var myWidth = SizeConfig.safeBlockHorizontal!;
 
     final url = widget.myUrl;
-    final uri = (url.startsWith('http://') || url.startsWith('https://'))
-        ? WebUri(url)
-        : WebUri('file://$url');
+    Uri resolvedUri;
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      resolvedUri = Uri.parse(url);
+    } else if (kIsWeb) {
+      // Sur le Web, les assets déclarés dans pubspec.yaml sont servis en HTTP
+      // sous "assets/", relativement à la page hôte : "file://" n'existe pas
+      // dans un navigateur.
+      resolvedUri = Uri.base.resolve('assets/$url');
+    } else {
+      resolvedUri = Uri.parse('file://$url');
+    }
 
     return Container(
       width: myWidth * 95,
       height: 262.5,
       color: myColorBlue,
       child: InAppWebView(
-        initialUrlRequest: URLRequest(url: uri),
+        initialUrlRequest: URLRequest(url: WebUri.uri(resolvedUri)),
         onWebViewCreated: (InAppWebViewController controller) {
           _webViewController = controller;
         },
