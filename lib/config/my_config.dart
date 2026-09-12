@@ -7,8 +7,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:http/http.dart' as http;
+import 'package:ahime/config/secret.dart' as secret;
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'dart:io' show Platform;
 import 'package:platform_detector/platform_detector.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -29,8 +31,17 @@ const Color myColorGreenn = Color(0xFF35d852);
 
 //adresse API
 // ignore: constant_identifier_names
-const String APIServeur = "https://www.ahime-ci.com";
-const String apiBaseURL = "www.ahime-ci.com";
+String get APIServeur {
+  // L'émulateur Android voit son propre "localhost" ; 10.0.2.2 route vers l'hôte.
+  if (!kIsWeb && Platform.isAndroid) {
+    return "http://10.0.2.2/apiAhime";
+  }
+  return "http://localhost/apiAhime";
+}
+//const String APIServeur = "https://www.ahime-ci.com";
+//const String apiBaseURL = "www.ahime-ci.com";
+// API Key - loaded from secret.dart
+
 var endpoint = '/api/action';
 var endpointINI = '/api';
 final apiurl = '$APIServeur$endpoint';
@@ -39,6 +50,18 @@ final apiurlINI = '$APIServeur$endpointINI';
 //assets uri
 const imageUri = 'assets/image';
 const fontsUri = 'assets/fonts';
+
+// Helper function to create Dio instance with API key header
+Dio createDioWithKey() {
+  final dio = Dio()
+    ..options.headers['X-API-Key'] = secret.kXApiKey;
+  return dio;
+}
+
+// Helper function to create Dio instance without API key
+Dio createDioWithoutKey() {
+  return Dio();
+}
 
 //pushPage
 Future pushPage(BuildContext context, Widget page) {
@@ -204,7 +227,7 @@ ntEtoile(
     color: myColor,
     borderColor: myBorderColor,
     allowHalfRating: true,
-    onRatingChanged:onChanged,
+    onRatingChanged: onChanged,
   );
 }
 
@@ -311,6 +334,7 @@ Future<List> getData(String enpoint) async {
   var headers = {
     'Content-Type': 'application/json; charset=UTF-8',
     'Access-Control-Allow-Origin': '*',
+    'X-API-Key': secret.kXApiKey,
   };
   final response = await client.get(
     url,
@@ -327,7 +351,10 @@ Future<List> getData(String enpoint) async {
 //envoyer une requête POST
 Future<List> postData(String data, String enpoint) async {
   final url = Uri.parse('$APIServeur$enpoint');
-  var headers = {'Content-Type': 'application/json; charset=UTF-8'};
+  var headers = {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'X-API-Key': secret.kXApiKey,
+  };
 
   final response = await client.post(
     url,
@@ -343,7 +370,7 @@ Future<List> postData(String data, String enpoint) async {
 }
 
 Future<List> getdata(String enpoint) async {
-  Dio dio = Dio(); // Créer une instance de Dio
+  final dio = createDioWithKey();
   final url = '$APIServeur$enpoint';
 
   try {
@@ -360,7 +387,7 @@ Future<List> getdata(String enpoint) async {
 }
 
 Future<List> postdata(data, String enpoint) async {
-  Dio dio = Dio();
+  final dio = createDioWithKey();
   final url = '$APIServeur$enpoint';
 
   try {
@@ -400,7 +427,7 @@ Map<String, String> mydata({required String mReq, String mReq2 = ''}) {
   return {
     'data_action': 'ReqExec',
     'Requete': mReq,
-    'Requete2': mReq2,
+    if (mReq2.isNotEmpty) 'Requete2': mReq2,
   };
 }
 
@@ -409,8 +436,8 @@ Map<String, String> dataMulti(
   return {
     'data_action': 'ReqMultiExec',
     'Requete1': mReq1,
-    'Requete2': mReq2,
-    'Requete3': mReq3,
+    if (mReq2.isNotEmpty) 'Requete2': mReq2,
+    if (mReq3.isNotEmpty) 'Requete3': mReq3,
   };
 }
 
@@ -644,7 +671,7 @@ copyClipBord(
     {required context, required String txtCopy, String msgCopy = ''}) async {
   await Clipboard.setData(ClipboardData(text: txtCopy)).then((_) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: Colors.black.withValues(alpha: 0.5),
+        backgroundColor: Colors.black.withValues(alpha: 0.5),
         margin: const EdgeInsets.all(5),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),

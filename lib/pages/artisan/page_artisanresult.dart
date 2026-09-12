@@ -6,9 +6,11 @@ import 'package:ahime/config/utils/my_navbar.dart';
 import 'package:ahime/config/my_config.dart';
 import 'package:ahime/config/utils/my_titlesub.dart';
 import 'package:ahime/config/utils/resizable.dart';
+import 'package:ahime/config/secret.dart' as secret;
 import 'package:dio/dio.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart' hide FormData;
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 int xEquat = 30;
 
@@ -37,29 +39,22 @@ class PageArtisantResult extends StatefulWidget {
 class _PageArtisantResultState extends State<PageArtisantResult> {
   final NbrController nbrC = Get.put(NbrController());
 
-  final ScrollController scrollControl = ScrollController();
-  final Dio dio = Dio(); // Créer une instance de Dio
-
-  List jsonData = []; // Tableau pour stocker les données JSON
+  final Dio dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
+  final PagingController<int, dynamic> _pagingController =
+      PagingController(firstPageKey: 0);
 
   int totalData = 0;
-  bool isLoading = false;
-  bool isInit = true;
-
-  int xlim1 = 0;
-  int xlim2 = xEquat;
 
   @override
   void dispose() {
-    scrollControl.dispose(); // Nettoie le contrôleur
+    _pagingController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    postdata(req1: fxReq(lim1: xlim1, lim2: xlim2), req2: fxReq());
-    scrollControl.addListener(loadMoreData);
+    _pagingController.addPageRequestListener(_fetchPage);
   }
 
   @override
@@ -80,9 +75,11 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
               children: [
                 MyNavbar(context: context),
                 const tltTitle(myTitle: 'Résultats artisan'),
-                myTlt(widget.xCategorie.isEmpty
-                    ? widget.xMetier
-                    : widget.xCategorie, myWidth),
+                myTlt(
+                    widget.xCategorie.isEmpty
+                        ? widget.xMetier
+                        : widget.xCategorie,
+                    myWidth),
                 myResultList(context, myWidth, myHeight)
               ],
             ),
@@ -126,36 +123,7 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
         children: [
           Obx(() => tltTotalresult(myResult: nbrC.txtresult.value)),
           SizedBox(height: 3),
-          jsonData.isEmpty
-              ? SizedBox(
-                  width: myWidth * 100,
-                  height: myHeight * 83,
-                  child: const Center(
-                      child: SpinKitPulsingGrid(
-                    color: myColorBlue,
-                    size: 100,
-                  )),
-                )
-              : jsonData[0] == false && totalData == 0
-                  ? SizedBox(
-                      width: myWidth * 100,
-                      height: myHeight * 83,
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.warning_rounded,
-                              color: myColorBlue, size: 40),
-                          SizedBox(height: 10),
-                          Text(
-                            'Aucun résultat',
-                            style: TextStyle(
-                              color: myColorBlue,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ))
-                  : myCnt(context, myWidth, myHeight),
+          myCnt(context, myWidth, myHeight),
           const SizedBox(height: 2),
         ],
       ),
@@ -166,25 +134,40 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
     return SizedBox(
       width: myWidth * 100,
       height: myHeight * 80,
-      child: ListView.builder(
-        controller: scrollControl,
-        itemCount: jsonData.length,
-        itemBuilder: (BuildContext context, int index) {
-          var result = jsonData[index];
-          return Column(
+      child: PagedListView<int, dynamic>(
+        pagingController: _pagingController,
+        builderDelegate: PagedChildBuilderDelegate<dynamic>(
+          itemBuilder: (context, result, index) {
+            return listArtisan(context, result);
+          },
+          firstPageProgressIndicatorBuilder: (context) => const Center(
+            child: SpinKitPulsingGrid(
+              color: myColorBlue,
+              size: 100,
+            ),
+          ),
+          newPageProgressIndicatorBuilder: (context) => const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: SpinKitThreeInOut(
+              color: myColorBlue,
+              size: 30,
+            ),
+          ),
+          noItemsFoundIndicatorBuilder: (context) => const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              listArtisan(context, result),
-              if (index == jsonData.length - 1 && isLoading)
-                const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: SpinKitThreeInOut(
-                    color: myColorBlue,
-                    size: 30,
-                  ),
-                )
+              Icon(Icons.warning_rounded, color: myColorBlue, size: 40),
+              SizedBox(height: 10),
+              Text(
+                'Aucun résultat',
+                style: TextStyle(
+                  color: myColorBlue,
+                  fontSize: 18,
+                ),
+              ),
             ],
-          );
-        },
+          ),
+        ),
       ),
     );
   }
@@ -205,7 +188,12 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
           ),
           child: Column(
             children: [
-              txtTitrehotel('${result['Nom'].toString()} ${result['prenom'].toString()}'),
+              txtTitrehotel(
+                [result['Nom']?.toString(), result['Prenom']?.toString()]
+                    .where((s) => s != null && s.trim().isNotEmpty)
+                    .join(' ')
+                    .toUpperCase(),
+              ),
               myDescription(context, SizeConfig.safeBlockHorizontal!,
                   SizeConfig.safeBlockVertical!, result)
             ],
@@ -248,7 +236,8 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 txtTitreVille(result['Ville'].toString()),
-                txtCommuneQuartier(result['Commune'].toString(), result['Quartier']),
+                txtCommuneQuartier(
+                    result['Commune'].toString(), result['Quartier']),
                 ntEtoile(
                     note: double.parse(result['Tnote'].toString()),
                     taille: 18,
@@ -317,7 +306,8 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
     ]);
   }
 
-  Container footerDescription(BuildContext context, Map<String, dynamic> result) {
+  Container footerDescription(
+      BuildContext context, Map<String, dynamic> result) {
     String myTitle = result['Categorie'];
     myTitle = myTitle == 'Batiment' ? 'Bâtiment' : myTitle;
     myTitle = myTitle == 'Securite' ? 'Sécurité' : myTitle;
@@ -373,48 +363,33 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
     );
   }
 
-  void loadMoreData() {
-    if (scrollControl.position.pixels ==
-            scrollControl.position.maxScrollExtent &&
-        jsonData.length < totalData) {
-      postdata(req1: fxReq(lim1: xlim1, lim2: xlim2));
-    }
-  }
-
-  Future<void> postdata({required String req1, String req2 = ''}) async {
-    FormData formData = FormData.fromMap(mydata(mReq: req1, mReq2: req2));
-
+  Future<void> _fetchPage(int pageKey) async {
     try {
-      setState(() {
-        isLoading = true;
-      });
-
-      var response = await dio.post(
+      final response = await dio.post(
         apiurl,
-        data: formData,
+        data: FormData.fromMap(mydata(
+          mReq: fxReq(lim1: pageKey, lim2: xEquat),
+          mReq2: pageKey == 0 ? fxReq() : '',
+        )),
       );
 
       if (response.statusCode == 200) {
-        if (isInit) {
-          isInit = false;
+        if (pageKey == 0) {
           totalData = response.data['total'];
           nbrC.tTotal(response.data['total']);
         }
-        setState(() {
-          isLoading = false;
-          if (response.data['result'].isEmpty) {
-            jsonData = [false];
-          } else {
-            jsonData.addAll(response.data['result']);
-            xlim1 += xEquat;
-            xlim2 += xEquat;
-          }
-        });
+        final List newItems = response.data['result'];
+        final isLastPage = pageKey + newItems.length >= totalData;
+        if (isLastPage) {
+          _pagingController.appendLastPage(newItems);
+        } else {
+          _pagingController.appendPage(newItems, pageKey + xEquat);
+        }
       } else {
         throw Exception('Échec de l\'envoi des données ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('Erreur de réseau : $e');
+      _pagingController.error = e;
     }
   }
 

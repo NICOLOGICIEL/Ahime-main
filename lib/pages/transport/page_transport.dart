@@ -257,7 +257,7 @@ class tabCtnMenuState extends State<tabCtnMenu> with TickerProviderStateMixin {
       );
 
   Future<void> getdataAll(String mReq1) async {
-    Dio dio = Dio();
+    Dio dio = createDioWithKey();
     List compagnie = [];
 
     FormData formData = FormData.fromMap(dataMulti(mReq1: mReq1));
@@ -275,7 +275,7 @@ class tabCtnMenuState extends State<tabCtnMenu> with TickerProviderStateMixin {
   }
 
   Future<void> getdataVille(String mReq1) async {
-    Dio dio = Dio();
+    Dio dio = createDioWithKey();
     List ville = [];
 
     FormData formData = FormData.fromMap(dataMulti(mReq1: mReq1));

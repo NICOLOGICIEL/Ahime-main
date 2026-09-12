@@ -82,7 +82,10 @@ class PageArtisanimg extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Text(
-                '${result['Nom']} ${result['Prenom']}',
+                [result['Nom']?.toString(), result['Prenom']?.toString()]
+                    .where((s) => s != null && s.trim().isNotEmpty)
+                    .join(' ')
+                    .toUpperCase(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

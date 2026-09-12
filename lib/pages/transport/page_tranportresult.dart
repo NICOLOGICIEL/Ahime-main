@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart' hide FormData;
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:ahime/config/utils/my_titlerusult.dart';
 import 'package:ahime/config/utils/my_navbar.dart';
@@ -49,29 +50,22 @@ class _PageTransportResultState extends State<PageTransportResult> {
   double xLat = 0;
   double xLong = 0;
 
-  final ScrollController scrollControl = ScrollController();
-  final Dio dio = Dio(); // Créer une instance de Dio
-
-  List jsonData = []; // Tableau pour stocker les données JSON
+  final Dio dio = createDioWithKey(); // Créer une instance de Dio avec X-API-Key
+  final PagingController<int, dynamic> _pagingController =
+      PagingController(firstPageKey: 0);
 
   int totalData = 0;
-  bool isLoading = false;
-  bool isInit = true;
-
-  int xlim1 = 0;
-  int xlim2 = xEquat;
 
   @override
   void dispose() {
-    scrollControl.dispose(); // Nettoie le contrôleur
+    _pagingController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    postdata(req1: fxReq(lim1: xlim1, lim2: xlim2), req2: fxReq());
-    scrollControl.addListener(loadMoreData);
+    _pagingController.addPageRequestListener(_fetchPage);
     getPosition();
   }
 
@@ -117,36 +111,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
         children: [
           Obx(() => tltTotalresult(myResult: nbrC.txtresult.value)),
           SizedBox(height: 3),
-          jsonData.isEmpty
-              ? SizedBox(
-                  width: myWidth * 100,
-                  height: myHeight * 83,
-                  child: const Center(
-                      child: SpinKitPulsingGrid(
-                    color: myColorBlue,
-                    size: 100,
-                  )),
-                )
-              : jsonData[0] == false && totalData == 0
-                  ? SizedBox(
-                      width: myWidth * 100,
-                      height: myHeight * 83,
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.warning_rounded,
-                              color: myColorBlue, size: 40),
-                          SizedBox(height: 10),
-                          Text(
-                            'Aucun résultat',
-                            style: TextStyle(
-                              color: myColorBlue,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ))
-                  : myCnt(context),
+          myCnt(context),
           const SizedBox(height: 2),
         ],
       ),
@@ -157,28 +122,43 @@ class _PageTransportResultState extends State<PageTransportResult> {
     return SizedBox(
       width: myWidth * 100,
       height: myHeight * 83,
-      child: ListView.builder(
-        controller: scrollControl,
-        itemCount: jsonData.length,
-        itemBuilder: (context, index) {
-          var result = jsonData[index];
-          return Column(
+      child: PagedListView<int, dynamic>(
+        pagingController: _pagingController,
+        builderDelegate: PagedChildBuilderDelegate<dynamic>(
+          itemBuilder: (context, result, index) {
+            return GestureDetector(
+              onTap: () {},
+              child: listHotel(result),
+            );
+          },
+          firstPageProgressIndicatorBuilder: (context) => const Center(
+            child: SpinKitPulsingGrid(
+              color: myColorBlue,
+              size: 100,
+            ),
+          ),
+          newPageProgressIndicatorBuilder: (context) => const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: SpinKitThreeInOut(
+              color: myColorBlue,
+              size: 30,
+            ),
+          ),
+          noItemsFoundIndicatorBuilder: (context) => const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {},
-                child: listHotel(result),
+              Icon(Icons.warning_rounded, color: myColorBlue, size: 40),
+              SizedBox(height: 10),
+              Text(
+                'Aucun résultat',
+                style: TextStyle(
+                  color: myColorBlue,
+                  fontSize: 18,
+                ),
               ),
-              if (index == jsonData.length - 1 && isLoading)
-                const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: SpinKitThreeInOut(
-                    color: myColorBlue,
-                    size: 30,
-                  ),
-                )
             ],
-          );
-        },
+          ),
+        ),
       ),
     );
   }
@@ -444,48 +424,33 @@ class _PageTransportResultState extends State<PageTransportResult> {
     );
   }
 
-  void loadMoreData() {
-    if (scrollControl.position.pixels ==
-            scrollControl.position.maxScrollExtent &&
-        jsonData.length < totalData) {
-      postdata(req1: fxReq(lim1: xlim1, lim2: xlim2));
-    }
-  }
-
-  Future<void> postdata({required String req1, String req2 = ''}) async {
-    FormData formData = FormData.fromMap(mydata(mReq: req1, mReq2: req2));
-
+  Future<void> _fetchPage(int pageKey) async {
     try {
-      setState(() {
-        isLoading = true;
-      });
-
-      var response = await dio.post(
+      final response = await dio.post(
         apiurl,
-        data: formData,
+        data: FormData.fromMap(mydata(
+          mReq: fxReq(lim1: pageKey, lim2: xEquat),
+          mReq2: pageKey == 0 ? fxReq() : '',
+        )),
       );
 
       if (response.statusCode == 200) {
-        if (isInit) {
-          isInit = false;
+        if (pageKey == 0) {
           totalData = response.data['total'];
           nbrC.tTotal(response.data['total']);
         }
-        setState(() {
-          isLoading = false;
-          if (response.data['result'].isEmpty) {
-            jsonData = [false];
-          } else {
-            jsonData.addAll(response.data['result']);
-            xlim1 += xEquat;
-            xlim2 += xEquat;
-          }
-        });
+        final List newItems = response.data['result'];
+        final isLastPage = pageKey + newItems.length >= totalData;
+        if (isLastPage) {
+          _pagingController.appendLastPage(newItems);
+        } else {
+          _pagingController.appendPage(newItems, pageKey + xEquat);
+        }
       } else {
         throw Exception('Échec de l\'envoi des données ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('Erreur de réseau : $e');
+      _pagingController.error = e;
     }
   }
 

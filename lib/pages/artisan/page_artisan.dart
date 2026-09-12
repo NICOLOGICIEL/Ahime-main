@@ -10,6 +10,7 @@ import 'package:ahime/config/utils/dropdownlist.dart';
 import 'package:ahime/config/utils/my_navbar.dart';
 import 'package:ahime/config/utils/resizable.dart';
 import 'package:ahime/config/my_config.dart';
+import 'package:ahime/config/secret.dart' as secret;
 import 'package:flutter/services.dart';
 import 'package:get/get.dart' hide FormData;
 import 'package:platform_detector/platform_detector.dart';
@@ -517,7 +518,7 @@ class _PageArtisanState extends State<PageArtisan> {
   }
 
   Future<void> getdataAll(String mReq1, String mReq2) async {
-    Dio dio = Dio();
+    Dio dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
     List category = [];
     List job = [];
 

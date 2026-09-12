@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ahime/pages/page_accueil.dart';
-import 'package:ahime/pages/page_mainscreen.dart';
+//import 'package:ahime/pages/page_mainscreen.dart';
 import 'package:ahime/config/my_config.dart';
 
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: myColorBlue),
         useMaterial3: true,
       ),
-      home: const PageMainscreen(),
+      home: const PageAccueil(),
     );
   }
 }

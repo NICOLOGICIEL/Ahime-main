@@ -10,6 +10,7 @@ import 'package:ahime/pages/hotel/page_h.dart';
 import 'package:ahime/pages/hotel/page_hotelimgdetail.dart';
 import 'package:readmore/readmore.dart';
 import 'package:ahime/config/getx/updateimg.dart';
+import 'package:ahime/config/secret.dart' as secret;
 
 class PageDetailH extends StatelessWidget {
   const PageDetailH({
@@ -144,7 +145,7 @@ class _DetailsState extends State<Details> {
   // Map pour stocker les données JSON
 
   Future<void> postdata(int iDhotel) async {
-    Dio dio = Dio(); // Créer une instance de Dio
+    Dio dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
     dio.options.headers['content-Type'] = 'application/json';
     final url = '$APIServeur$endpoint';
     //final  url = Uri.https(apiBaseURL,endpoint);

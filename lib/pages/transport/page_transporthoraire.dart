@@ -23,7 +23,7 @@ class PageTransportHoraire extends StatefulWidget {
 class _PageTransportHoraireState extends State<PageTransportHoraire> {
   List jsonData = []; // Tableau pour stocker les données JSON
   List jsonDataEscale = []; // Tableau pour stocker les données JSON
-  final Dio dio = Dio(); // Créer une instance de Dio
+  final Dio dio = createDioWithKey(); // Créer une instance de Dio avec X-API-Key
   int totalData = 0;
   int totalDataEscale = 0;
 

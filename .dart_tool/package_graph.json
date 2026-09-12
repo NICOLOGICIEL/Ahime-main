@@ -21,6 +21,7 @@
         "get",
         "google_fonts",
         "http",
+        "infinite_scroll_pagination",
         "latlong2",
         "motion_toast",
         "platform_detector",
@@ -74,6 +75,15 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "infinite_scroll_pagination",
+      "version": "4.1.0",
+      "dependencies": [
+        "flutter",
+        "flutter_staggered_grid_view",
+        "sliver_tools"
       ]
     },
     {
@@ -423,6 +433,20 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "sliver_tools",
+      "version": "0.2.12",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "flutter_staggered_grid_view",
+      "version": "0.7.0",
+      "dependencies": [
+        "flutter"
       ]
     },
     {

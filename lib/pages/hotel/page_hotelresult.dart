@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart' hide FormData;
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:ahime/config/utils/my_titlerusult.dart';
 import 'package:ahime/config/utils/my_navbar.dart';
 import 'package:ahime/config/my_config.dart';
 import 'package:ahime/config/utils/my_titlesub.dart';
 import 'package:ahime/config/utils/resizable.dart';
+import 'package:ahime/config/secret.dart' as secret;
 import 'package:ahime/pages/hotel/page_hoteldetail.dart';
 import 'package:readmore/readmore.dart';
 
@@ -69,29 +71,22 @@ class PageHotelResult extends StatefulWidget {
 class _PageHotelResultState extends State<PageHotelResult> {
   final NbrController nbrC = Get.put(NbrController());
 
-  final ScrollController scrollControl = ScrollController();
-  final Dio dio = Dio(); // Créer une instance de Dio
-
-  List jsonData = []; // Tableau pour stocker les données JSON
+  final Dio dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
+  final PagingController<int, dynamic> _pagingController =
+      PagingController(firstPageKey: 0);
 
   int totalData = 0;
-  bool isLoading = false;
-  bool isInit = true;
-
-  int xlim1 = 0;
-  int xlim2 = xEquat;
 
   @override
   void dispose() {
-    scrollControl.dispose(); // Nettoie le contrôleur
+    _pagingController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    postdata(req1: fxReq(lim1: xlim1, lim2: xlim2), req2: fxReq());
-    scrollControl.addListener(loadMoreData);
+    _pagingController.addPageRequestListener(_fetchPage);
   }
 
   @override
@@ -136,36 +131,7 @@ class _PageHotelResultState extends State<PageHotelResult> {
         children: [
           Obx(() => tltTotalresult(myResult: nbrC.txtresult.value)),
           SizedBox(height: 3),
-          jsonData.isEmpty
-              ? SizedBox(
-                  width: myWidth * 100,
-                  height: myHeight * 83,
-                  child: const Center(
-                      child: SpinKitPulsingGrid(
-                    color: myColorBlue,
-                    size: 100,
-                  )),
-                )
-              : jsonData[0] == false && totalData == 0
-                  ? SizedBox(
-                      width: myWidth * 100,
-                      height: myHeight * 83,
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.warning_rounded,
-                              color: myColorBlue, size: 40),
-                          SizedBox(height: 10),
-                          Text(
-                            'Aucun résultat',
-                            style: TextStyle(
-                              color: myColorBlue,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ],
-                      ))
-                  : myCnt(context),
+          myCnt(context),
           const SizedBox(height: 2),
         ],
       ),
@@ -176,74 +142,89 @@ class _PageHotelResultState extends State<PageHotelResult> {
     return SizedBox(
       width: myWidth * 100,
       height: myHeight * 83,
-      child: ListView.builder(
-        controller: scrollControl,
-        itemCount: jsonData.length,
-        itemBuilder: (context, index) {
-          var result = jsonData[index];
-          return Column(
+      child: PagedListView<int, dynamic>(
+        pagingController: _pagingController,
+        builderDelegate: PagedChildBuilderDelegate<dynamic>(
+          itemBuilder: (context, result, index) {
+            return GestureDetector(
+              onTap: () {
+                pushPage(
+                    context,
+                     PageDetailH(
+                       idHotel: int.parse(result['IDHOTEL'].toString()),
+                       nomEtab: result['NomEtab'].toString(),
+                       nomVille: result['Ville'].toString(),
+                       nomCommune: result['Commune'].toString(),
+                       nomQuartier: result['Quartier'].toString(),
+                       nLongitude: result['Longitude'].toString(),
+                       nLatitude: result['Latitude'].toString(),
+                       prixMini: result['PrixMini'].toString(),
+                       img64: imgBase64Dec(result['Image']),
+                       contact: result['Contact'].toString(),
+                       numWhatApp: result['NumWhatApp'].toString(),
+                       situation: result['Situation'].toString(),
+                       description: result['Description'].toString(),
+                       nbEtoile: double.parse(result['NbrEtoile'].toString()),
+                       wifi: int.parse(result['Wifi'].toString()),
+                       piscine: int.parse(result['Piscine'].toString()),
+                       ventilateur: int.parse(result['Ventilateur'].toString()),
+                       climatiseur: int.parse(result['Climatiseur'].toString()),
+                       restoBar: int.parse(result['Bar'].toString()),
+                       garage: int.parse(result['Spa'].toString()),
+                     ));
+              },
+              child: listHotel(
+                context,
+                result['IDHOTEL'].toString(),
+                result['NomEtab'].toString(),
+                result['Ville'].toString(),
+                result['Commune'].toString(),
+                result['Quartier'].toString(),
+                result['PrixMini'].toString(),
+                imgBase64Dec(result['Image']),
+                result['Contact'].toString(),
+                result['NumWhatApp'].toString(),
+                result['Situation'].toString(),
+                double.parse(result['NbrEtoile'].toString()),
+                int.parse(result['Wifi'].toString()),
+                int.parse(result['Piscine'].toString()),
+                int.parse(result['Ventilateur'].toString()),
+                int.parse(result['Climatiseur'].toString()),
+                int.parse(result['Bar'].toString()),
+                int.parse(result['Spa'].toString()),
+                result['Longitude'].toString(),
+                result['Latitude'].toString(),
+              ),
+            );
+          },
+          firstPageProgressIndicatorBuilder: (context) => const Center(
+            child: SpinKitPulsingGrid(
+              color: myColorBlue,
+              size: 100,
+            ),
+          ),
+          newPageProgressIndicatorBuilder: (context) => const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: SpinKitThreeInOut(
+              color: myColorBlue,
+              size: 30,
+            ),
+          ),
+          noItemsFoundIndicatorBuilder: (context) => const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {
-                  pushPage(
-                      context,
-                       PageDetailH(
-                         idHotel: int.parse(result['IDHOTEL'].toString()),
-                         nomEtab: result['NomEtab'].toString(),
-                         nomVille: result['Ville'].toString(),
-                         nomCommune: result['Commune'].toString(),
-                         nomQuartier: result['Quartier'].toString(),
-                         nLongitude: result['Longitude'].toString(),
-                         nLatitude: result['Latitude'].toString(),
-                         prixMini: result['PrixMini'].toString(),
-                         img64: imgBase64Dec(result['Image']),
-                         contact: result['Contact'].toString(),
-                         numWhatApp: result['NumWhatApp'].toString(),
-                         situation: result['Situation'].toString(),
-                         description: result['Description'].toString(),
-                         nbEtoile: double.parse(result['NbrEtoile'].toString()),
-                         wifi: int.parse(result['Wifi'].toString()),
-                         piscine: int.parse(result['Piscine'].toString()),
-                         ventilateur: int.parse(result['Ventilateur'].toString()),
-                         climatiseur: int.parse(result['Climatiseur'].toString()),
-                         restoBar: int.parse(result['Bar'].toString()),
-                         garage: int.parse(result['Spa'].toString()),
-                       ));
-                },
-                child: listHotel(
-                  context,
-                  result['IDHOTEL'].toString(),
-                  result['NomEtab'].toString(),
-                  result['Ville'].toString(),
-                  result['Commune'].toString(),
-                  result['Quartier'].toString(),
-                  result['PrixMini'].toString(),
-                  imgBase64Dec(result['Image']),
-                  result['Contact'].toString(),
-                  result['NumWhatApp'].toString(),
-                  result['Situation'].toString(),
-                  double.parse(result['NbrEtoile'].toString()),
-                  int.parse(result['Wifi'].toString()),
-                  int.parse(result['Piscine'].toString()),
-                  int.parse(result['Ventilateur'].toString()),
-                  int.parse(result['Climatiseur'].toString()),
-                  int.parse(result['Bar'].toString()),
-                  int.parse(result['Spa'].toString()),
-                  result['Longitude'].toString(),
-                  result['Latitude'].toString(),
+              Icon(Icons.warning_rounded, color: myColorBlue, size: 40),
+              SizedBox(height: 10),
+              Text(
+                'Aucun résultat',
+                style: TextStyle(
+                  color: myColorBlue,
+                  fontSize: 18,
                 ),
               ),
-              if (index == jsonData.length - 1 && isLoading)
-                const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: SpinKitThreeInOut(
-                    color: myColorBlue,
-                    size: 30,
-                  ),
-                )
             ],
-          );
-        },
+          ),
+        ),
       ),
     );
   }
@@ -548,48 +529,33 @@ class _PageHotelResultState extends State<PageHotelResult> {
     );
   }
 
-  void loadMoreData() {
-    if (scrollControl.position.pixels ==
-            scrollControl.position.maxScrollExtent &&
-        jsonData.length < totalData) {
-      postdata(req1: fxReq(lim1: xlim1, lim2: xlim2));
-    }
-  }
-
-  Future<void> postdata({required String req1, String req2 = ''}) async {
-    FormData formData = FormData.fromMap(mydata(mReq: req1, mReq2: req2));
-
+  Future<void> _fetchPage(int pageKey) async {
     try {
-      setState(() {
-        isLoading = true;
-      });
-
-      var response = await dio.post(
+      final response = await dio.post(
         apiurl,
-        data: formData,
+        data: FormData.fromMap(mydata(
+          mReq: fxReq(lim1: pageKey, lim2: xEquat),
+          mReq2: pageKey == 0 ? fxReq() : '',
+        )),
       );
 
       if (response.statusCode == 200) {
-        if (isInit) {
-          isInit = false;
+        if (pageKey == 0) {
           totalData = response.data['total'];
           nbrC.tTotal(response.data['total']);
         }
-        setState(() {
-          isLoading = false;
-          if (response.data['result'].isEmpty) {
-            jsonData = [false];
-          } else {
-            jsonData.addAll(response.data['result']);
-            xlim1 += xEquat;
-            xlim2 += xEquat;
-          }
-        });
+        final List newItems = response.data['result'];
+        final isLastPage = pageKey + newItems.length >= totalData;
+        if (isLastPage) {
+          _pagingController.appendLastPage(newItems);
+        } else {
+          _pagingController.appendPage(newItems, pageKey + xEquat);
+        }
       } else {
         throw Exception('Échec de l\'envoi des données ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('Erreur de réseau : $e');
+      _pagingController.error = e;
     }
   }
 
