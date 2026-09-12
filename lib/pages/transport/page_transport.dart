@@ -51,9 +51,7 @@ class PageTransport extends StatelessWidget {
                           ),
                         ),
                       ),
-                      //myPub(myUrl: 'slideshow/pubtransport/index.html'),
-                      const SlideImg(
-                          imgPath: '$imageUri/pubads.jpg', title: ''),
+                      myPub(myUrl: 'slideshow/pubtransport/index.html'),
                     ],
                   ),
                 ),

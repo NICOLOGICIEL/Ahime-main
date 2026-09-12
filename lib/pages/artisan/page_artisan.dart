@@ -84,7 +84,7 @@ class _PageArtisanState extends State<PageArtisan> {
                     children: [
                       myPubText('Annonce publicitaire'),
                       SizedBox(height: myHeight * 0.5),
-                      myPub(myUrl: 'https://ahime-ci.com/pubhotel'),
+                      myPub(myUrl: 'slideshow/pubartisan/index.html'),
                     ],
                   ),
                 ),
