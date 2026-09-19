@@ -4,13 +4,13 @@ import 'package:ahime/config/getx/updaterusulttext.dart';
 import 'package:ahime/pages/artisan/page_artisanresult.dart';
 import 'package:ahime/config/getx/updatescreen.dart';
 import 'package:ahime/pages/artisan/page_artisantrecherche.dart';
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ahime/config/utils/dropdownlist.dart';
 import 'package:ahime/config/utils/my_navbar.dart';
 import 'package:ahime/config/utils/resizable.dart';
 import 'package:ahime/config/my_config.dart';
-import 'package:ahime/config/secret.dart' as secret;
+//import 'package:ahime/config/secret.dart' as secret;
 import 'package:flutter/services.dart';
 import 'package:get/get.dart' hide FormData;
 import 'package:platform_detector/platform_detector.dart';
@@ -130,7 +130,7 @@ class _PageArtisanState extends State<PageArtisan> {
       height: 30,
       color: Colors.white,
       child: const TextScroll(
-        " La confiance n'exclut pas le contrôle nous vous invitons a adopter la bonne attitude, régler après la prestation et à voir notre condition générale d'utilisation article 4.",
+        " La confiance n'exclut pas le contrôle nous vous invitons a adopter la bonne attitude, régler après la prestation et à voir notre condition générale d'utilisation article 4.",
         velocity: Velocity(pixelsPerSecond: Offset(30, 0)),
         mode: TextScrollMode.endless,
         style: TextStyle(

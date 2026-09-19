@@ -2,7 +2,7 @@
 
 import 'package:ahime/config/getx/updaterusulttext.dart';
 import 'package:ahime/pages/transport/page_tranportresult.dart';
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ahime/config/utils/my_navbar.dart';
 import 'package:ahime/config/my_config.dart';
