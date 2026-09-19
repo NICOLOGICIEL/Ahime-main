@@ -518,26 +518,7 @@ class _PageArtisanState extends State<PageArtisan> {
   }
 
   Future<void> getdataAll(String mReq1, String mReq2) async {
-    Dio dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
-    List category = [];
-    List job = [];
-
-    FormData formData = FormData.fromMap(dataMulti(mReq1: mReq1, mReq2: mReq2));
-    return dio.post(apiurl, data: formData).then((response) {
-      var data1 = response.data['result1'];
-      var data2 = response.data['result2'];
-      if ((data1 != null && data1.isNotEmpty) ||
-          (data2 != null && data2.isNotEmpty)) {
-        category.addAll(data1.map((item) => item['Categorie']));
-        job.addAll(data2.map((item) => item['Libelle']));
-
-        for (var name in category) {
-          listCat.add(MyListf(name));
-        }
-        for (var name in job) {
-          listMetier.add(MyListf(name));
-        }
-      }
-    });
+    if (listCat.length > 1 && listMetier.length > 1) return;
+    await initGlobalLists();
   }
 }

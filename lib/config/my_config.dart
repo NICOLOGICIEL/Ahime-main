@@ -57,21 +57,24 @@ Future<void> initAPIServer() async {
 }
 
 // ignore: constant_identifier_names
+// Note : on cible /apiAhime/public (et non /apiAhime) en local. Le
+// .htaccess racine de apiAhime est censé réécrire /apiAhime/* vers
+// /apiAhime/public/*, mais cette réécriture s'est révélée peu fiable avec la
+// configuration Apache/WAMP locale (routes retournant 404 alors qu'identiques
+// en ciblant /public directement) ; /public est le chemin fiable vérifié.
 String get APIServeur {
   if (_apiServeurOverride != null) return _apiServeurOverride!;
 
+  // L'API est hébergée à http://apiahime.local
   if (kIsWeb) {
-    // Web : le navigateur et le serveur API tournent sur la même machine.
-    return "http://localhost/apiAhime";
+    return "http://apiahime.local";
   }
   if (!Platform.isAndroid) {
-    // iOS, Windows, macOS, Linux : environnement de développement local.
-    return "http://localhost/apiAhime";
+    // iOS, Windows, macOS, Linux : accède directement au nom de domaine local.
+    return "http://apiahime.local";
   }
-  // Android : par défaut on suppose un émulateur, qui voit l'hôte (donc son
-  // "localhost") via l'adresse spéciale 10.0.2.2 (voir initAPIServer pour
-  // le cas d'un appareil physique).
-  return "http://10.0.2.2/apiAhime";
+  // Android : émulateur voit l'hôte via 10.0.2.2 ; appareil physique utilise le nom de domaine local.
+  return "http://apiahime.local";
 }
 
 //const String APIServeur = "https://www.ahime-ci.com";
@@ -467,12 +470,13 @@ Map<String, String> mydata({required String mReq, String mReq2 = ''}) {
 }
 
 Map<String, String> dataMulti(
-    {required String mReq1, String mReq2 = '', String mReq3 = ''}) {
+    {required String mReq1, String mReq2 = '', String mReq3 = '', String mReq4 = ''}) {
   return {
     'data_action': 'ReqMultiExec',
     'Requete1': mReq1,
     if (mReq2.isNotEmpty) 'Requete2': mReq2,
     if (mReq3.isNotEmpty) 'Requete3': mReq3,
+    if (mReq4.isNotEmpty) 'Requete4': mReq4,
   };
 }
 
@@ -858,6 +862,61 @@ List<MyListf> listMetier = [
 List<MyListf> listCompagnie = [
   MyListf(''),
 ];
+
+bool _globalListsLoaded = false;
+
+Future<void> initGlobalLists() async {
+  if (_globalListsLoaded) return;
+  try {
+    final dio = createDioWithKey();
+    final response = await dio.post(
+      apiurl,
+      data: FormData.fromMap(dataMulti(
+        mReq1: 'SELECT * FROM categoriemetier',
+        mReq2: 'SELECT * FROM metier',
+        mReq3: 'SELECT NomVille FROM ville ORDER BY NomVille ASC',
+        mReq4: 'SELECT DISTINCT Nom FROM compagnie',
+      )),
+    );
+
+    if (response.statusCode == 200) {
+      listCat.clear();
+      listMetier.clear();
+      listVille.clear();
+      listCompagnie.clear();
+
+      final data1 = response.data['result1'];
+      final data2 = response.data['result2'];
+      final data3 = response.data['result3'];
+      final data4 = response.data['result4'];
+
+      if (data1 != null && data1.isNotEmpty) {
+        for (var item in data1) {
+          listCat.add(MyListf(item['Categorie']));
+        }
+      }
+      if (data2 != null && data2.isNotEmpty) {
+        for (var item in data2) {
+          listMetier.add(MyListf(item['Libelle']));
+        }
+      }
+      if (data3 != null && data3.isNotEmpty) {
+        for (var item in data3) {
+          listVille.add(MyListf(item['NomVille']));
+        }
+      }
+      if (data4 != null && data4.isNotEmpty) {
+        for (var item in data4) {
+          listCompagnie.add(MyListf(item['Nom']));
+        }
+      }
+    }
+  } catch (e) {
+    // Les listes restent vides en cas d'échec
+  } finally {
+    _globalListsLoaded = true;
+  }
+}
 
 //------------------------Géolocalisation GPS------------------------
 

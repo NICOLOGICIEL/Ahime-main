@@ -101,7 +101,7 @@ class tabCtnMenuState extends State<tabCtnMenu> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     getdataAll('SELECT DISTINCT Nom FROM compagnie');
-    getdataVille('SELECT NomVille FROM ville');
+    getdataVille('SELECT NomVille FROM ville ORDER BY NomVille ASC');
   }
 
   @override
@@ -255,38 +255,12 @@ class tabCtnMenuState extends State<tabCtnMenu> with TickerProviderStateMixin {
       );
 
   Future<void> getdataAll(String mReq1) async {
-    Dio dio = createDioWithKey();
-    List compagnie = [];
-
-    FormData formData = FormData.fromMap(dataMulti(mReq1: mReq1));
-    return dio.post(apiurl, data: formData).then((response) {
-      var data1 = response.data['result1'];
-
-      if (data1 != null && data1.isNotEmpty) {
-        compagnie.addAll(data1.map((item) => item['Nom']));
-
-        for (var name in compagnie) {
-          listCompagnie.add(MyListf(name));
-        }
-      }
-    });
+    if (listCompagnie.length > 1) return;
+    await initGlobalLists();
   }
 
   Future<void> getdataVille(String mReq1) async {
-    Dio dio = createDioWithKey();
-    List ville = [];
-
-    FormData formData = FormData.fromMap(dataMulti(mReq1: mReq1));
-    return dio.post(apiurl, data: formData).then((response) {
-      var data1 = response.data['result1'];
-
-      if (data1 != null && data1.isNotEmpty) {
-        ville.addAll(data1.map((item) => item['NomVille']));
-
-        for (var name in ville) {
-          listVille.add(MyListf(name));
-        }
-      }
-    });
+    if (listVille.length > 1) return;
+    await initGlobalLists();
   }
 }

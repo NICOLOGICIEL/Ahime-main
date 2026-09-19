@@ -27,6 +27,7 @@ Future<void> main() async {
     HttpOverrides.global = DebugHttpOverrides();
   }
   await initAPIServer();
+  await initGlobalLists();
   runApp(const MyApp());
 }
 
