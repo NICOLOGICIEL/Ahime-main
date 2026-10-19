@@ -57,7 +57,9 @@ class PageHotel extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: myHeight * 1),
-                      myPub(myUrl: 'slideshow/pubhotel/index.html'),
+                      myPub(
+                          myUrl:
+                              'https://www.ahime-ci.com/slideshow/pubhotel/index.html'),
                     ],
                   ),
                 ),

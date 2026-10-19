@@ -51,7 +51,7 @@ class PageTransport extends StatelessWidget {
                           ),
                         ),
                       ),
-                      myPub(myUrl: 'slideshow/pubtransport/index.html'),
+                      myPub(myUrl: 'https://www.ahime-ci.com/slideshow/pubtransport/index.html'),
                     ],
                   ),
                 ),

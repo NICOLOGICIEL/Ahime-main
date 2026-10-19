@@ -102,7 +102,9 @@ class PageAccueil extends StatelessWidget {
                         SizedBox(height: myHeight * 1),
                         headBar(),
                         SizedBox(height: myHeight * 1),
-                        myPub(myUrl: 'slideshow/index.html'),
+                        myPub(
+                            myUrl:
+                                'https://www.ahime-ci.com/slideshow/index.html'),
                         SizedBox(height: myHeight * 1),
                         textCategorie(),
                         SizedBox(height: myHeight * 1),
