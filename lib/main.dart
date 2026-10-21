@@ -5,7 +5,6 @@ import 'package:ahime/pages/page_accueil.dart';
 //import 'package:ahime/pages/page_mainscreen.dart';
 import 'package:ahime/config/my_config.dart';
 
-
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 // Dart's HTTP stack (used by Dio/http) ignores Android's network_security_config,
@@ -26,6 +25,9 @@ Future<void> main() async {
   if (kDebugMode) {
     HttpOverrides.global = DebugHttpOverrides();
   }
+  // Détecte la plateforme (émulateur vs vrai téléphone Android) et calcule
+  // l'URL de l'API. Doit être appelé AVANT initGlobalLists(), qui utilise
+  // déjà "apiurl" pour interroger le backend.
   await initAPIServer();
   await initGlobalLists();
   runApp(const MyApp());
@@ -33,7 +35,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

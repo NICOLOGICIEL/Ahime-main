@@ -21,7 +21,9 @@ double myWidth = 0;
 
 int xEquat = 30;
 
-final apiurl = '$APIServeur$endpoint';
+/// URL de l'endpoint action. Getter (et non "final") afin de toujours
+/// refléter la valeur résolue par [initAPIServer] au démarrage.
+String get apiurl => '$APIServeur$endpoint';
 
 class PageHotelResult extends StatefulWidget {
   const PageHotelResult({
@@ -150,28 +152,28 @@ class _PageHotelResultState extends State<PageHotelResult> {
               onTap: () {
                 pushPage(
                     context,
-                     PageDetailH(
-                       idHotel: int.parse(result['IDHOTEL'].toString()),
-                       nomEtab: result['NomEtab'].toString(),
-                       nomVille: result['Ville'].toString(),
-                       nomCommune: result['Commune'].toString(),
-                       nomQuartier: result['Quartier'].toString(),
-                       nLongitude: result['Longitude'].toString(),
-                       nLatitude: result['Latitude'].toString(),
-                       prixMini: result['PrixMini'].toString(),
-                       img64: imgBase64Dec(result['Image']),
-                       contact: result['Contact'].toString(),
-                       numWhatApp: result['NumWhatApp'].toString(),
-                       situation: result['Situation'].toString(),
-                       description: result['Description'].toString(),
-                       nbEtoile: double.parse(result['NbrEtoile'].toString()),
-                       wifi: int.parse(result['Wifi'].toString()),
-                       piscine: int.parse(result['Piscine'].toString()),
-                       ventilateur: int.parse(result['Ventilateur'].toString()),
-                       climatiseur: int.parse(result['Climatiseur'].toString()),
-                       restoBar: int.parse(result['Bar'].toString()),
-                       garage: int.parse(result['Spa'].toString()),
-                     ));
+                    PageDetailH(
+                      idHotel: int.parse(result['IDHOTEL'].toString()),
+                      nomEtab: result['NomEtab'].toString(),
+                      nomVille: result['Ville'].toString(),
+                      nomCommune: result['Commune'].toString(),
+                      nomQuartier: result['Quartier'].toString(),
+                      nLongitude: result['Longitude'].toString(),
+                      nLatitude: result['Latitude'].toString(),
+                      prixMini: result['PrixMini'].toString(),
+                      img64: imgBase64Dec(result['Image']),
+                      contact: result['Contact'].toString(),
+                      numWhatApp: result['NumWhatApp'].toString(),
+                      situation: result['Situation'].toString(),
+                      description: result['Description'].toString(),
+                      nbEtoile: double.parse(result['NbrEtoile'].toString()),
+                      wifi: int.parse(result['Wifi'].toString()),
+                      piscine: int.parse(result['Piscine'].toString()),
+                      ventilateur: int.parse(result['Ventilateur'].toString()),
+                      climatiseur: int.parse(result['Climatiseur'].toString()),
+                      restoBar: int.parse(result['Bar'].toString()),
+                      garage: int.parse(result['Spa'].toString()),
+                    ));
               },
               child: listHotel(
                 context,
@@ -296,7 +298,7 @@ class _PageHotelResultState extends State<PageHotelResult> {
     ));
   }
 
-   nbrEtoile(double rating) {
+  nbrEtoile(double rating) {
     return StarRating(
       rating: rating,
       borderColor: const Color.fromARGB(255, 241, 241, 241),

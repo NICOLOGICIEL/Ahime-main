@@ -31,60 +31,120 @@ const Color myColorGreenLight = Color(0xFFe9fdfe);
 const Color myColorGreenn = Color(0xFF35d852);
 
 //adresse API
-// Résultat de la détection asynchrone d'un appareil Android physique
-// (voir initAPIServer). Reste null sur émulateur, web, iOS et desktop :
-// APIServeur retombe alors sur son cas "localhost".
-String? _apiServeurOverride;
 
-/// A appeler une fois au démarrage (voir main.dart) pour distinguer, sur
-/// Android, un appareil physique d'un émulateur. Ne fait rien sur les
-/// autres plateformes : le getter APIServeur gère déjà leur cas "localhost".
+/// URL de l'API en production (utilisée par défaut en mode release).
+const String apiUrlProduction = "https://www.ahime-ci.com";
+
+/// Hôte du serveur de développement local.
+///
+/// - Web / desktop        : l'app tourne sur la même machine que le serveur
+///                          => "localhost".
+/// - Émulateur Android    : l'hôte est joignable via l'alias 10.0.2.2.
+/// - Vrai téléphone Android: le téléphone et le PC doivent être sur le MÊME
+///                          réseau Wi-Fi => il faut l'IP LAN du PC
+///                          (ex: 192.168.1.42), "localhost" pointant sur
+///                          le téléphone lui-même.
+///
+/// Imposable à la compilation :
+///   flutter run --dart-define=AHIME_API_HOST=192.168.1.42
+const String apiHoteLocal = String.fromEnvironment(
+  'AHIME_API_HOST',
+  defaultValue: 'localhost',
+);
+
+/// Port du serveur de développement local (XAMPP/WAMP : 8000, Apache : 80).
+const String apiPortLocal = String.fromEnvironment(
+  'AHIME_API_PORT',
+  defaultValue: '8000',
+);
+
+/// Suffixe de base des routes API sur le serveur local.
+const String apiSuffixeLocal = '/apiAhime';
+
+/// URL d'API imposée à la compilation (prioritaire sur tout le reste) :
+///   flutter run --dart-define=AHIME_API_URL=http://192.168.1.42:8000/apiAhime
+const String apiUrlForcee = String.fromEnvironment('AHIME_API_URL');
+
+/// true quand l'application cible le serveur de développement local.
+bool _modeLocal = false;
+
+/// true quand un téléphone Android PHYSIQUE a été détecté
+/// (false => émulateur Android).
+bool _appareilAndroidPhysique = false;
+
+/// Détecte la plateforme d'exécution puis détermine l'URL d'API à utiliser.
+///
+/// À appeler UNE FOIS au démarrage ([main.dart]) AVANT `runApp`, car la
+/// détection d'un appareil Android physique est asynchrone.
+///
+/// - émulateur Android      -> http://10.0.2.2:<port>/apiAhime
+/// - vrai téléphone Android  -> http://<IP LAN du PC>:<port>/apiAhime
+/// - web / desktop / iOS     -> http://localhost:<port>/apiAhime
+/// - mode release            -> https://www.ahime-ci.com
 Future<void> initAPIServer() async {
-  if (kIsWeb || !Platform.isAndroid) return;
+  // URL imposée : aucune détection n'est nécessaire.
+  if (apiUrlForcee.isNotEmpty) return;
 
-  try {
-    final androidInfo = await DeviceInfoPlugin().androidInfo;
-    if (androidInfo.isPhysicalDevice) {
-      // Téléphone Android physique : utiliser l'IP du PC sur le réseau Wi-Fi.
-      // Pour le développement local, remplacer par http://<IP_LOCALE>/apiAhime
-      // Exemple : _apiServeurOverride = "http://192.168.1.100/apiAhime";
-      _apiServeurOverride = "https://www.ahime-ci.com";
+  if (!kIsWeb && Platform.isAndroid) {
+    try {
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      // device_info_plus >= 8 expose "isPhysicalDevice" (true sur un vrai
+      // téléphone, false sur un émulateur).
+      _appareilAndroidPhysique = androidInfo.isPhysicalDevice;
+    } catch (_) {
+      // Détection impossible : on suppose un émulateur (10.0.2.2).
+      _appareilAndroidPhysique = false;
     }
-    // Sinon : émulateur, la valeur par défaut (10.0.2.2) reste correcte.
-  } catch (_) {
-    // Détection impossible : on garde la valeur par défaut de l'émulateur.
+  }
+
+  // En debug on vise le serveur local, en release la production.
+  _modeLocal = kDebugMode;
+
+  if (kDebugMode) {
+    debugPrint(
+      '[API] physique=$_appareilAndroidPhysique modeLocal=$_modeLocal '
+      '=> $APIServeur',
+    );
   }
 }
 
-// ignore: constant_identifier_names
-// Note : on cible /apiAhime/public (et non /apiAhime) en local. Le
-// .htaccess racine de apiAhime est censé réécrire /apiAhime/* vers
-// /apiAhime/public/*, mais cette réécriture s'est révélée peu fiable avec la
-// configuration Apache/WAMP locale (routes retournant 404 alors qu'identiques
-// en ciblant /public directement) ; /public est le chemin fiable vérifié.
+/// URL de base de l'API (sans le chemin d'endpoint).
 String get APIServeur {
-  if (_apiServeurOverride != null) return _apiServeurOverride!;
+  // 1. URL imposée via --dart-define (prioritaire).
+  if (apiUrlForcee.isNotEmpty) return apiUrlForcee;
 
-  // L'API est hébergée à http://apiahime.local
-  if (kIsWeb) {
-    return "http://apiahime.local";
+  // 2. Serveur de développement local.
+  if (_modeLocal) {
+    final String hote;
+    if (!kIsWeb && Platform.isAndroid) {
+      hote = _appareilAndroidPhysique
+          ? apiHoteLocal // vrai téléphone : IP LAN du PC
+          : '10.0.2.2'; // émulateur : alias de la machine hôte
+    } else {
+      hote = apiHoteLocal; // web / desktop : localhost
+    }
+    return 'http://$hote:$apiPortLocal$apiSuffixeLocal';
   }
-  if (!Platform.isAndroid) {
-    // iOS, Windows, macOS, Linux : accède directement au nom de domaine local.
-    return "http://apiahime.local";
-  }
-  // Android : émulateur voit l'hôte via 10.0.2.2 ; appareil physique utilise le nom de domaine local.
-  return "http://apiahime.local";
+
+  // 3. Production.
+  return apiUrlProduction;
 }
 
-//const String APIServeur = "https://www.ahime-ci.com";
 //const String apiBaseURL = "www.ahime-ci.com";
 // API Key - loaded from secret.dart
 
 var endpoint = '/api/action';
 var endpointINI = '/api';
-final apiurl = '$APIServeur$endpoint';
-final apiurlINI = '$APIServeur$endpointINI';
+
+/// URL complète de l'endpoint action
+/// (ex: https://www.ahime-ci.com/api/action).
+String get apiurl => '$APIServeur$endpoint';
+
+/// URL complète de l'endpoint racine (ex: https://www.ahime-ci.com/api).
+String get apiurlINI => '$APIServeur$endpointINI';
+
+// Endpoint API complet pour utilisation dans l'application (https://www.ahime-ci.com/api/action)
+String get apiEndpoint => '$APIServeur$endpoint';
 
 //assets uri
 const imageUri = 'assets/image';
@@ -470,7 +530,10 @@ Map<String, String> mydata({required String mReq, String mReq2 = ''}) {
 }
 
 Map<String, String> dataMulti(
-    {required String mReq1, String mReq2 = '', String mReq3 = '', String mReq4 = ''}) {
+    {required String mReq1,
+    String mReq2 = '',
+    String mReq3 = '',
+    String mReq4 = ''}) {
   return {
     'data_action': 'ReqMultiExec',
     'Requete1': mReq1,
