@@ -1,0 +1,53 @@
+Running `(cd /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/; TMPDIR=/var/folders/lp/vmd9221d56n7_mxm86qf_8jh0000gn/T/ PATH=/Applications/Xcode.app/Contents/SharedFrameworks/SwiftBuild.framework/Versions/A/PlugIns/SWBBuildService.bundle/Contents/PlugIns/SWBUniversalPlatformPlugin.bundle/Contents/Frameworks/SWBUniversalPlatform.framework/Resources:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Users/macbookpro/Flutter/flutter/bin:/Users/macbookpro/.gemini/antigravity/bin:/Users/macbookpro/jdk/Contents/Home/bin:/Users/macbookpro/node/bin:/Users/macbookpro/.gem/ruby/2.6.0/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin USERPROFILE=/Users/macbookpro HOME=/Users/macbookpro /Users/macbookpro/Flutter/flutter/bin/cache/dart-sdk/bin/dart --packages=/Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/package_config.json /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/objective_c/6e20107924/hook.dill --config=/Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/objective_c/6e20107924/input.json )`.
+INFO: 2026-10-22 22:15:33.085048: Using compiler /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang from BuildInput.cCompiler.cc.
+
+INFO: 2026-10-22 22:15:33.224158: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/include/dart_api_dl.c -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-10-22 22:15:33.231431: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/objective_c.c -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c.c.o
+
+INFO: 2026-10-22 22:15:33.232765: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/input_stream_adapter.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-10-22 22:15:33.233418: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/objective_c.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c.m.o
+
+INFO: 2026-10-22 22:15:33.236295: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/observer.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/observer.m.o
+
+INFO: 2026-10-22 22:15:33.237547: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/ns_number.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/ns_number.m.o
+
+INFO: 2026-10-22 22:15:33.238615: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/objective_c_bindings_generated.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-10-22 22:15:33.562724: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c.c.o
+
+INFO: 2026-10-22 22:15:33.563604: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-10-22 22:15:33.680257: 
+INFO: 2026-10-22 22:15:33.680334: 
+INFO: 2026-10-22 22:15:33.680365: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/observer.m.o
+
+INFO: 2026-10-22 22:15:33.776374: 
+INFO: 2026-10-22 22:15:33.776528: 
+
+INFO: 2026-10-22 22:15:33.777881: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/protocol.m.o
+
+INFO: 2026-10-22 22:15:34.751260: 
+INFO: 2026-10-22 22:15:34.751429: 
+INFO: 2026-10-22 22:15:34.751527: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/ns_number.m.o
+
+INFO: 2026-10-22 22:15:34.760411: 
+INFO: 2026-10-22 22:15:34.760494: 
+INFO: 2026-10-22 22:15:34.760561: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-10-22 22:15:34.831303: 
+INFO: 2026-10-22 22:15:34.831455: 
+INFO: 2026-10-22 22:15:34.831518: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c.m.o
+
+INFO: 2026-10-22 22:15:35.349411: 
+INFO: 2026-10-22 22:15:35.349468: 
+INFO: 2026-10-22 22:15:35.349487: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-10-22 22:15:35.350422: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -shared -Wl,-encryptable -undefined dynamic_lookup -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -target arm64-apple-ios-simulator -mios-version-min=15 /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/include/dart_api_dl.c.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c.c.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/input_stream_adapter.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/observer.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/ns_number.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/protocol.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/obj/src/objective_c_bindings_generated.m.o -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/objective_c.dylib
+
+INFO: 2026-10-22 22:15:35.482777: 
+INFO: 2026-10-22 22:15:35.482969: ld: warning: -undefined dynamic_lookup is deprecated on iOS-simulator
+
+INFO: 2026-10-22 22:15:35.483046: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/6e20107924/objective_c.dylib
+

@@ -1,0 +1,55 @@
+Running `(cd /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/; TMPDIR=/var/folders/lp/vmd9221d56n7_mxm86qf_8jh0000gn/T/ PATH=/Users/macbookpro/jdk/Contents/Home/bin:/Users/macbookpro/node/bin:/Users/macbookpro/.gem/ruby/2.6.0/bin:/Users/macbookpro/Flutter/flutter/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-x64 HOME=/Users/macbookpro /Users/macbookpro/Flutter/flutter/bin/cache/dart-sdk/bin/dart --packages=/Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/package_config.json /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/objective_c/5f31b8d621/hook.dill --config=/Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/objective_c/5f31b8d621/input.json )`.
+INFO: 2026-10-22 20:59:24.867871: Using compiler /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang from BuildInput.cCompiler.cc.
+
+INFO: 2026-10-22 20:59:24.879266: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -target x86_64-apple-darwin -mmacos-version-min=13 -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/include/dart_api_dl.c -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-10-22 20:59:24.882488: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -target x86_64-apple-darwin -mmacos-version-min=13 -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/objective_c.c -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c.c.o
+
+INFO: 2026-10-22 20:59:24.883162: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -target x86_64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/objective_c.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c.m.o
+
+ream_adapter.m.o
+
+INFO: 2026-10-22 20:59:24.883392: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -target x86_64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/observer.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/observer.m.o
+
+INFO: 2026-10-22 20:59:24.883622: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -target x86_64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/ns_number.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/ns_number.m.o
+
+INFO: 2026-10-22 20:59:24.884071: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -target x86_64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2/src/objective_c_bindings_generated.m -fpic -gline-tables-only -I src -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-10-22 20:59:25.021443: 
+INFO: 2026-10-22 20:59:25.021721: 
+INFO: 2026-10-22 20:59:25.022044: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-10-22 20:59:25.026386: 
+INFO: 2026-10-22 20:59:25.026500: 
+INFO: 2026-10-22 20:59:25.026539: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c.c.o
+
+INFO: 2026-10-22 20:59:25.057525: 
+INFO: 2026-10-22 20:59:25.057600: 
+INFO: 2026-10-22 20:59:25.057637: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/protocol.m.o
+
+INFO: 2026-10-22 20:59:25.060051: 
+INFO: 2026-10-22 20:59:25.060118: 
+INFO: 2026-10-22 20:59:25.060150: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/observer.m.o
+
+INFO: 2026-10-22 20:59:25.679143: 
+INFO: 2026-10-22 20:59:25.679200: 
+INFO: 2026-10-22 20:59:25.679221: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/ns_number.m.o
+
+INFO: 2026-10-22 20:59:25.700822: 
+INFO: 2026-10-22 20:59:25.700871: 
+INFO: 2026-10-22 20:59:25.700886: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c.m.o
+
+INFO: 2026-10-22 20:59:25.703189: 
+INFO: 2026-10-22 20:59:25.703244: 
+INFO: 2026-10-22 20:59:25.703260: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-10-22 20:59:25.800084: 
+INFO: 2026-10-22 20:59:25.800149: 
+INFO: 2026-10-22 20:59:25.800167: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-10-22 20:59:25.800989: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -shared -Wl,-encryptable -undefined dynamic_lookup -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -target x86_64-apple-darwin -mmacos-version-min=13 /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/include/dart_api_dl.c.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c.c.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/input_stream_adapter.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/observer.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/ns_number.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/protocol.m.o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/obj/src/objective_c_bindings_generated.m.o -o /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/objective_c.dylib
+
+INFO: 2026-10-22 20:59:25.883417: 
+INFO: 2026-10-22 20:59:25.883531: 
+INFO: 2026-10-22 20:59:25.883582: Generated /Users/macbookpro/Documents/projet/Ahime-main/.dart_tool/hooks_runner/shared/objective_c/build/5f31b8d621/objective_c.dylib
+

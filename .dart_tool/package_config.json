@@ -351,9 +351,9 @@
     },
     {
       "name": "infinite_scroll_pagination",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/infinite_scroll_pagination-4.1.0",
+      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/infinite_scroll_pagination-5.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "3.4"
     },
     {
       "name": "intl",
