@@ -488,7 +488,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
               title: Text("Erreur de localisation"),
               displaySideBar: false,
               toastDuration: Duration(seconds: 4),
-              animationType: AnimationType.fromTop,
+              animationType: AnimationType.slideInFromTop,
               animationCurve: Curves.decelerate,
               description: Text(e.toString()))
           // ignore: use_build_context_synchronously
