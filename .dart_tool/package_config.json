@@ -3,775 +3,757 @@
   "packages": [
     {
       "name": "animated_custom_dropdown",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/animated_custom_dropdown-3.1.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/animated_custom_dropdown-3.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "ansicolor",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/ansicolor-2.0.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/ansicolor-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "archive",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/archive-4.5.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/archive-4.5.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "args",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/args-2.7.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/args-2.7.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "async",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/async-2.13.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/async-2.13.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "boolean_selector",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/boolean_selector-2.1.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "characters",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/characters-1.4.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/characters-1.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "charcode",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/charcode-1.4.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/charcode-1.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "checked_yaml",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/checked_yaml-2.0.4",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/checked_yaml-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "3.8"
     },
     {
       "name": "cli_util",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/cli_util-0.4.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/cli_util-0.4.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "clock",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/clock-1.1.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/clock-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "code_assets",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/code_assets-2.1.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/code_assets-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "collection",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/collection-1.19.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/collection-1.19.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "crypto",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/crypto-3.0.7",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/crypto-3.0.7",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "csslib",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/csslib-1.0.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/csslib-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "cupertino_icons",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.9",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/cupertino_icons-1.0.9",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
-      "name": "cupertino_ui",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/cupertino_ui-1.1.4",
-      "packageUri": "lib/",
-      "languageVersion": "3.13"
-    },
-    {
       "name": "device_info_plus",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/device_info_plus-10.1.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/device_info_plus-10.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "device_info_plus_platform_interface",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/device_info_plus_platform_interface-7.0.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/device_info_plus_platform_interface-7.0.3",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "dio",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/dio-5.11.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/dio-5.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "dio_web_adapter",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/dio_web_adapter-2.2.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/dio_web_adapter-2.2.2",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "double_back_to_close_app",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/double_back_to_close_app-2.1.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/double_back_to_close_app-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "fake_async",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/fake_async-1.3.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/fake_async-1.3.3",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "ffi",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/ffi-2.2.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/ffi-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "file",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/file-7.0.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/file-7.0.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "fixnum",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/fixnum-1.1.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/fixnum-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/macbookpro/Flutter/flutter/packages/flutter",
+      "rootUri": "file:///C:/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.11"
+      "languageVersion": "3.9"
     },
     {
       "name": "flutter_inappwebview",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview-6.1.5",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview-6.1.5",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "flutter_inappwebview_android",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview_android-1.1.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_android-1.1.3",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "flutter_inappwebview_internal_annotations",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview_internal_annotations-1.3.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_internal_annotations-1.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "flutter_inappwebview_ios",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_ios-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "flutter_inappwebview_macos",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview_macos-1.1.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_macos-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "flutter_inappwebview_platform_interface",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview_platform_interface-1.3.0+1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_platform_interface-1.3.0+1",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "flutter_inappwebview_web",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview_web-1.1.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_web-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "flutter_inappwebview_windows",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_inappwebview_windows-0.6.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_windows-0.6.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "flutter_launcher_icons",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_launcher_icons-0.14.4",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_launcher_icons-0.14.4",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_lints-5.0.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-5.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
-      "name": "flutter_localizations",
-      "rootUri": "file:///Users/macbookpro/Flutter/flutter/packages/flutter_localizations",
-      "packageUri": "lib/",
-      "languageVersion": "3.11"
-    },
-    {
       "name": "flutter_masked_text2",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_masked_text2-0.9.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_masked_text2-0.9.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_native_splash",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.8",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_native_splash-2.4.7",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "flutter_rating",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_rating-2.0.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_rating-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_spinkit",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_spinkit-5.2.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_spinkit-5.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_staggered_grid_view",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_staggered_grid_view-0.7.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///Users/macbookpro/Flutter/flutter/packages/flutter_test",
+      "rootUri": "file:///C:/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.11"
+      "languageVersion": "3.9"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///Users/macbookpro/Flutter/flutter/packages/flutter_web_plugins",
+      "rootUri": "file:///C:/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
-      "languageVersion": "3.11"
+      "languageVersion": "3.9"
     },
     {
       "name": "geolocator",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/geolocator-13.0.4",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator-13.0.4",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "geolocator_android",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/geolocator_android-4.6.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_android-4.6.2",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "geolocator_apple",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/geolocator_apple-2.4.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_apple-2.4.2",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "geolocator_platform_interface",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/geolocator_platform_interface-4.4.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_platform_interface-4.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "geolocator_web",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/geolocator_web-4.1.4",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_web-4.1.4",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "geolocator_windows",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.5",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator_windows-0.2.5",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "get",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/get-4.7.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/get-4.7.3",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
     {
       "name": "google_fonts",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/google_fonts-6.3.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/google_fonts-6.3.3",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "hooks",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/hooks-2.2.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/hooks-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "html",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/html-0.15.7",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/html-0.15.7",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/http-1.6.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/http-1.6.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "http_parser",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/http_parser-4.1.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "image",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/image-4.12.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.12.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "infinite_scroll_pagination",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/infinite_scroll_pagination-5.1.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/infinite_scroll_pagination-5.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "intl",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/intl-0.20.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.20.3",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "jni",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/jni-1.1.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/jni-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "jni_flutter",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/jni_flutter-1.0.4+1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/jni_flutter-1.0.4+1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "jni_util",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/jni_util-1.0.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/jni_util-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "json_annotation",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/json_annotation-4.12.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/json_annotation-4.12.0",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "latlong2",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/latlong2-0.9.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/latlong2-0.9.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/leak_tracker-11.0.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-11.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.10",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.10",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_testing",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/leak_tracker_testing-3.0.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_testing-3.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/lints-5.1.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/lints-5.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
     {
       "name": "logging",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/logging-1.3.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "matcher",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/matcher-0.12.20",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/matcher-0.12.19",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "3.7"
     },
     {
       "name": "material_color_utilities",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/material_color_utilities-0.13.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/material_color_utilities-0.13.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
-      "name": "material_ui",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/material_ui-1.8.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.13"
-    },
-    {
       "name": "meta",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/meta-1.19.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.17.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "mime",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/mime-2.1.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/mime-2.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "motion_toast",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/motion_toast-2.16.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/motion_toast-2.15.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "objective_c",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/objective_c-9.6.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/objective_c-9.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "package_config",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/package_config-3.0.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/package_config-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.11"
     },
     {
       "name": "path",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/path-1.9.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/path-1.9.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "path_provider",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/path_provider-2.1.6",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider-2.1.6",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "path_provider_android",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/path_provider_android-2.3.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_android-2.3.1",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "path_provider_foundation",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/path_provider_foundation-2.6.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.6.0",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "path_provider_linux",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-2.2.2",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "path_provider_platform_interface",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_platform_interface-2.1.3",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "petitparser",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/petitparser-7.1.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/petitparser-7.0.2",
       "packageUri": "lib/",
-      "languageVersion": "3.13"
+      "languageVersion": "3.8"
     },
     {
       "name": "platform",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/platform-3.2.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/platform-3.1.6",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "3.2"
     },
     {
       "name": "platform_detector",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/platform_detector-0.2.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/platform_detector-0.2.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "plugin_platform_interface",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "posix",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/posix-6.5.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/posix-6.5.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "pub_semver",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/pub_semver-2.2.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/pub_semver-2.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "readmore",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/readmore-3.0.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/readmore-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "record_use",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/record_use-1.1.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/record_use-0.6.0",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "responsive_sizer",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/responsive_sizer-3.3.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/responsive_sizer-3.3.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "scrollable_text_indicator",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/scrollable_text_indicator-0.0.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/scrollable_text_indicator-0.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/macbookpro/Flutter/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///C:/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
-      "languageVersion": "3.11"
+      "languageVersion": "3.9"
     },
     {
       "name": "sliver_tools",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/sliver_tools-0.2.12",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/sliver_tools-0.2.12",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "source_span",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/source_span-1.10.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/source_span-1.10.2",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "stack_trace",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/stack_trace-1.12.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/stack_trace-1.12.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "stream_channel",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/stream_channel-2.1.4",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/stream_channel-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "string_scanner",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/string_scanner-1.4.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.4.1",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "term_glyph",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/term_glyph-1.2.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/term_glyph-1.2.2",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/test_api-0.7.12",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.10",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "3.7"
     },
     {
       "name": "text_scroll",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/text_scroll-0.2.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/text_scroll-0.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "timeline_tile_plus",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/timeline_tile_plus-0.0.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/timeline_tile_plus-0.0.3",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "typed_data",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "universal_html",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/universal_html-2.3.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/universal_html-2.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
     {
       "name": "universal_io",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/universal_io-2.3.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/universal_io-2.3.1",
       "packageUri": "lib/",
       "languageVersion": "3.6"
     },
     {
       "name": "url_launcher",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher-6.3.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher-6.3.3",
       "packageUri": "lib/",
       "languageVersion": "3.11"
     },
     {
       "name": "url_launcher_android",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.33",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_android-6.3.30",
       "packageUri": "lib/",
-      "languageVersion": "3.12"
+      "languageVersion": "3.10"
     },
     {
       "name": "url_launcher_ios",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher_ios-6.4.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_ios-6.4.2",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "url_launcher_linux",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_linux-3.2.3",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "url_launcher_macos",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.6",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_macos-3.2.6",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "url_launcher_platform_interface",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher_platform_interface-2.3.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_platform_interface-2.3.2",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
     {
       "name": "url_launcher_web",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_web-2.4.3",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "url_launcher_windows",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.6",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_windows-3.1.6",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "uuid",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/uuid-4.6.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/uuid-4.6.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "vector_math",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/vector_math-2.4.3",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/vector_math-2.2.0",
       "packageUri": "lib/",
-      "languageVersion": "3.10"
+      "languageVersion": "3.1"
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/vm_service-15.4.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-15.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "web",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/web-1.1.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/web-1.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "webview_flutter",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/webview_flutter-4.14.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/webview_flutter-4.14.1",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "webview_flutter_android",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/webview_flutter_android-4.14.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/webview_flutter_android-4.12.0",
       "packageUri": "lib/",
-      "languageVersion": "3.12"
+      "languageVersion": "3.9"
     },
     {
       "name": "webview_flutter_platform_interface",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-2.15.1",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/webview_flutter_platform_interface-2.15.1",
       "packageUri": "lib/",
       "languageVersion": "3.9"
     },
     {
       "name": "webview_flutter_wkwebview",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.27.2",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/webview_flutter_wkwebview-3.25.1",
       "packageUri": "lib/",
-      "languageVersion": "3.13"
+      "languageVersion": "3.10"
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/win32-5.15.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.15.0",
       "packageUri": "lib/",
       "languageVersion": "3.8"
     },
     {
       "name": "win32_registry",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/win32_registry-1.1.5",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/win32_registry-1.1.5",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "xdg_directories",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/xdg_directories-1.1.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/xdg_directories-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "xml",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/xml-7.1.0",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/xml-6.6.1",
       "packageUri": "lib/",
-      "languageVersion": "3.13"
+      "languageVersion": "3.8"
     },
     {
       "name": "yaml",
-      "rootUri": "file:///Users/macbookpro/.pub-cache/hosted/pub.dev/yaml-3.1.4",
+      "rootUri": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache/hosted/pub.dev/yaml-3.1.4",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -783,8 +765,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.13.5",
-  "flutterRoot": "file:///Users/macbookpro/Flutter/flutter",
-  "flutterVersion": "3.47.7",
-  "pubCache": "file:///Users/macbookpro/.pub-cache"
+  "generatorVersion": "3.11.5",
+  "flutterRoot": "file:///C:/flutter",
+  "flutterVersion": "3.41.8",
+  "pubCache": "file:///C:/Users/NKOUASSI/AppData/Local/Pub/Cache"
 }
