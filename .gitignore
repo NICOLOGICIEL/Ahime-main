@@ -4,7 +4,7 @@
 *.pyc
 
 # API credentials (never commit)
-lib/config/secret.dart
+#lib/config/secret.dart
 *.swp
 .DS_Store
 .atom/
