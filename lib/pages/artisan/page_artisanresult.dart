@@ -40,21 +40,35 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
   final NbrController nbrC = Get.put(NbrController());
 
   final Dio dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
-  final PagingController<int, dynamic> _pagingController =
-      PagingController(firstPageKey: 0);
+  late final PagingController<int, dynamic> _pagingController =
+      PagingController<int, dynamic>(
+    getNextPageKey: (state) {
+      final pages = state.pages ?? const [];
+      if (pages.isEmpty) {
+        return 0;
+      }
+      final lastPage = pages.last;
+      if (lastPage.length < xEquat) {
+        return null;
+      }
+      final lastKey = state.keys?.last ?? 0;
+      return lastKey + xEquat;
+    },
+    fetchPage: (pageKey) => _fetchPage(pageKey),
+  );
 
   int totalData = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pagingController.fetchNextPage();
+  }
 
   @override
   void dispose() {
     _pagingController.dispose();
     super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _pagingController.addPageRequestListener(_fetchPage);
   }
 
   @override
@@ -134,38 +148,42 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
     return SizedBox(
       width: myWidth * 100,
       height: myHeight * 80,
-      child: PagedListView<int, dynamic>(
-        pagingController: _pagingController,
-        builderDelegate: PagedChildBuilderDelegate<dynamic>(
-          itemBuilder: (context, result, index) {
-            return listArtisan(context, result);
-          },
-          firstPageProgressIndicatorBuilder: (context) => const Center(
-            child: SpinKitPulsingGrid(
-              color: myColorBlue,
-              size: 100,
-            ),
-          ),
-          newPageProgressIndicatorBuilder: (context) => const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: SpinKitThreeInOut(
-              color: myColorBlue,
-              size: 30,
-            ),
-          ),
-          noItemsFoundIndicatorBuilder: (context) => const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.warning_rounded, color: myColorBlue, size: 40),
-              SizedBox(height: 10),
-              Text(
-                'Aucun résultat',
-                style: TextStyle(
-                  color: myColorBlue,
-                  fontSize: 18,
-                ),
+      child: PagingListener(
+        controller: _pagingController,
+        builder: (context, state, fetchNextPage) => PagedListView<int, dynamic>(
+          state: state,
+          fetchNextPage: fetchNextPage,
+          builderDelegate: PagedChildBuilderDelegate<dynamic>(
+            itemBuilder: (context, result, index) {
+              return listArtisan(context, result);
+            },
+            firstPageProgressIndicatorBuilder: (context) => const Center(
+              child: SpinKitPulsingGrid(
+                color: myColorBlue,
+                size: 100,
               ),
-            ],
+            ),
+            newPageProgressIndicatorBuilder: (context) => const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: SpinKitThreeInOut(
+                color: myColorBlue,
+                size: 30,
+              ),
+            ),
+            noItemsFoundIndicatorBuilder: (context) => const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.warning_rounded, color: myColorBlue, size: 40),
+                SizedBox(height: 10),
+                Text(
+                  'Aucun résultat',
+                  style: TextStyle(
+                    color: myColorBlue,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -363,7 +381,7 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
     );
   }
 
-  Future<void> _fetchPage(int pageKey) async {
+  Future<List<dynamic>> _fetchPage(int pageKey) async {
     try {
       final response = await dio.post(
         apiurl,
@@ -378,18 +396,13 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
           totalData = response.data['total'];
           nbrC.tTotal(response.data['total']);
         }
-        final List newItems = response.data['result'];
-        final isLastPage = pageKey + newItems.length >= totalData;
-        if (isLastPage) {
-          _pagingController.appendLastPage(newItems);
-        } else {
-          _pagingController.appendPage(newItems, pageKey + xEquat);
-        }
-      } else {
-        throw Exception('Échec de l\'envoi des données ${response.statusCode}');
+        final List<dynamic> newItems = response.data['result'];
+        return newItems;
       }
+
+      throw Exception('Échec de l\'envoi des données ${response.statusCode}');
     } catch (e) {
-      _pagingController.error = e;
+      throw e;
     }
   }
 

@@ -74,21 +74,35 @@ class _PageHotelResultState extends State<PageHotelResult> {
   final NbrController nbrC = Get.put(NbrController());
 
   final Dio dio = Dio()..options.headers['X-API-Key'] = secret.kXApiKey;
-  final PagingController<int, dynamic> _pagingController =
-      PagingController(firstPageKey: 0);
+  late final PagingController<int, dynamic> _pagingController =
+      PagingController<int, dynamic>(
+    getNextPageKey: (state) {
+      final pages = state.pages ?? const [];
+      if (pages.isEmpty) {
+        return 0;
+      }
+      final lastPage = pages.last;
+      if (lastPage.length < xEquat) {
+        return null;
+      }
+      final lastKey = state.keys?.last ?? 0;
+      return lastKey + xEquat;
+    },
+    fetchPage: (pageKey) => _fetchPage(pageKey),
+  );
 
   int totalData = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pagingController.fetchNextPage();
+  }
 
   @override
   void dispose() {
     _pagingController.dispose();
     super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _pagingController.addPageRequestListener(_fetchPage);
   }
 
   @override
@@ -144,87 +158,91 @@ class _PageHotelResultState extends State<PageHotelResult> {
     return SizedBox(
       width: myWidth * 100,
       height: myHeight * 83,
-      child: PagedListView<int, dynamic>(
-        pagingController: _pagingController,
-        builderDelegate: PagedChildBuilderDelegate<dynamic>(
-          itemBuilder: (context, result, index) {
-            return GestureDetector(
-              onTap: () {
-                pushPage(
-                    context,
-                    PageDetailH(
-                      idHotel: int.parse(result['IDHOTEL'].toString()),
-                      nomEtab: result['NomEtab'].toString(),
-                      nomVille: result['Ville'].toString(),
-                      nomCommune: result['Commune'].toString(),
-                      nomQuartier: result['Quartier'].toString(),
-                      nLongitude: result['Longitude'].toString(),
-                      nLatitude: result['Latitude'].toString(),
-                      prixMini: result['PrixMini'].toString(),
-                      img64: imgBase64Dec(result['Image']),
-                      contact: result['Contact'].toString(),
-                      numWhatApp: result['NumWhatApp'].toString(),
-                      situation: result['Situation'].toString(),
-                      description: result['Description'].toString(),
-                      nbEtoile: double.parse(result['NbrEtoile'].toString()),
-                      wifi: int.parse(result['Wifi'].toString()),
-                      piscine: int.parse(result['Piscine'].toString()),
-                      ventilateur: int.parse(result['Ventilateur'].toString()),
-                      climatiseur: int.parse(result['Climatiseur'].toString()),
-                      restoBar: int.parse(result['Bar'].toString()),
-                      garage: int.parse(result['Spa'].toString()),
-                    ));
-              },
-              child: listHotel(
-                context,
-                result['IDHOTEL'].toString(),
-                result['NomEtab'].toString(),
-                result['Ville'].toString(),
-                result['Commune'].toString(),
-                result['Quartier'].toString(),
-                result['PrixMini'].toString(),
-                imgBase64Dec(result['Image']),
-                result['Contact'].toString(),
-                result['NumWhatApp'].toString(),
-                result['Situation'].toString(),
-                double.parse(result['NbrEtoile'].toString()),
-                int.parse(result['Wifi'].toString()),
-                int.parse(result['Piscine'].toString()),
-                int.parse(result['Ventilateur'].toString()),
-                int.parse(result['Climatiseur'].toString()),
-                int.parse(result['Bar'].toString()),
-                int.parse(result['Spa'].toString()),
-                result['Longitude'].toString(),
-                result['Latitude'].toString(),
-              ),
-            );
-          },
-          firstPageProgressIndicatorBuilder: (context) => const Center(
-            child: SpinKitPulsingGrid(
-              color: myColorBlue,
-              size: 100,
-            ),
-          ),
-          newPageProgressIndicatorBuilder: (context) => const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: SpinKitThreeInOut(
-              color: myColorBlue,
-              size: 30,
-            ),
-          ),
-          noItemsFoundIndicatorBuilder: (context) => const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.warning_rounded, color: myColorBlue, size: 40),
-              SizedBox(height: 10),
-              Text(
-                'Aucun résultat',
-                style: TextStyle(
-                  color: myColorBlue,
-                  fontSize: 18,
+      child: PagingListener(
+        controller: _pagingController,
+        builder: (context, state, fetchNextPage) => PagedListView<int, dynamic>(
+          state: state,
+          fetchNextPage: fetchNextPage,
+          builderDelegate: PagedChildBuilderDelegate<dynamic>(
+            itemBuilder: (context, result, index) {
+              return GestureDetector(
+                onTap: () {
+                  pushPage(
+                      context,
+                      PageDetailH(
+                        idHotel: int.parse(result['IDHOTEL'].toString()),
+                        nomEtab: result['NomEtab'].toString(),
+                        nomVille: result['Ville'].toString(),
+                        nomCommune: result['Commune'].toString(),
+                        nomQuartier: result['Quartier'].toString(),
+                        nLongitude: result['Longitude'].toString(),
+                        nLatitude: result['Latitude'].toString(),
+                        prixMini: result['PrixMini'].toString(),
+                        img64: imgBase64Dec(result['Image']),
+                        contact: result['Contact'].toString(),
+                        numWhatApp: result['NumWhatApp'].toString(),
+                        situation: result['Situation'].toString(),
+                        description: result['Description'].toString(),
+                        nbEtoile: double.parse(result['NbrEtoile'].toString()),
+                        wifi: int.parse(result['Wifi'].toString()),
+                        piscine: int.parse(result['Piscine'].toString()),
+                        ventilateur: int.parse(result['Ventilateur'].toString()),
+                        climatiseur: int.parse(result['Climatiseur'].toString()),
+                        restoBar: int.parse(result['Bar'].toString()),
+                        garage: int.parse(result['Spa'].toString()),
+                      ));
+                },
+                child: listHotel(
+                  context,
+                  result['IDHOTEL'].toString(),
+                  result['NomEtab'].toString(),
+                  result['Ville'].toString(),
+                  result['Commune'].toString(),
+                  result['Quartier'].toString(),
+                  result['PrixMini'].toString(),
+                  imgBase64Dec(result['Image']),
+                  result['Contact'].toString(),
+                  result['NumWhatApp'].toString(),
+                  result['Situation'].toString(),
+                  double.parse(result['NbrEtoile'].toString()),
+                  int.parse(result['Wifi'].toString()),
+                  int.parse(result['Piscine'].toString()),
+                  int.parse(result['Ventilateur'].toString()),
+                  int.parse(result['Climatiseur'].toString()),
+                  int.parse(result['Bar'].toString()),
+                  int.parse(result['Spa'].toString()),
+                  result['Longitude'].toString(),
+                  result['Latitude'].toString(),
                 ),
+              );
+            },
+            firstPageProgressIndicatorBuilder: (context) => const Center(
+              child: SpinKitPulsingGrid(
+                color: myColorBlue,
+                size: 100,
               ),
-            ],
+            ),
+            newPageProgressIndicatorBuilder: (context) => const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: SpinKitThreeInOut(
+                color: myColorBlue,
+                size: 30,
+              ),
+            ),
+            noItemsFoundIndicatorBuilder: (context) => const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.warning_rounded, color: myColorBlue, size: 40),
+                SizedBox(height: 10),
+                Text(
+                  'Aucun résultat',
+                  style: TextStyle(
+                    color: myColorBlue,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -531,7 +549,7 @@ class _PageHotelResultState extends State<PageHotelResult> {
     );
   }
 
-  Future<void> _fetchPage(int pageKey) async {
+  Future<List<dynamic>> _fetchPage(int pageKey) async {
     try {
       final response = await dio.post(
         apiurl,
@@ -546,18 +564,13 @@ class _PageHotelResultState extends State<PageHotelResult> {
           totalData = response.data['total'];
           nbrC.tTotal(response.data['total']);
         }
-        final List newItems = response.data['result'];
-        final isLastPage = pageKey + newItems.length >= totalData;
-        if (isLastPage) {
-          _pagingController.appendLastPage(newItems);
-        } else {
-          _pagingController.appendPage(newItems, pageKey + xEquat);
-        }
-      } else {
-        throw Exception('Échec de l\'envoi des données ${response.statusCode}');
+        final List<dynamic> newItems = response.data['result'];
+        return newItems;
       }
+
+      throw Exception('Échec de l\'envoi des données ${response.statusCode}');
     } catch (e) {
-      _pagingController.error = e;
+      throw e;
     }
   }
 

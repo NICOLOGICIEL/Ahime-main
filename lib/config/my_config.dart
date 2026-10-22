@@ -74,13 +74,9 @@ bool _appareilAndroidPhysique = false;
 
 /// Détecte la plateforme d'exécution puis détermine l'URL d'API à utiliser.
 ///
-/// À appeler UNE FOIS au démarrage ([main.dart]) AVANT `runApp`, car la
-/// détection d'un appareil Android physique est asynchrone.
-///
-/// - émulateur Android      -> http://10.0.2.2:<port>/apiAhime
-/// - vrai téléphone Android  -> http://<IP LAN du PC>:<port>/apiAhime
-/// - web / desktop / iOS     -> http://localhost:<port>/apiAhime
-/// - mode release            -> https://www.ahime-ci.com
+/// L'API de production est hébergée chez Ahime. Le mode debug ne force pas le
+/// serveur local par défaut, car cela casse les appels sur iOS/Android simulés.
+/// Un override local reste possible via `--dart-define=AHIME_API_URL`.
 Future<void> initAPIServer() async {
   // URL imposée : aucune détection n'est nécessaire.
   if (apiUrlForcee.isNotEmpty) return;
@@ -88,17 +84,15 @@ Future<void> initAPIServer() async {
   if (!kIsWeb && Platform.isAndroid) {
     try {
       final androidInfo = await DeviceInfoPlugin().androidInfo;
-      // device_info_plus >= 8 expose "isPhysicalDevice" (true sur un vrai
-      // téléphone, false sur un émulateur).
       _appareilAndroidPhysique = androidInfo.isPhysicalDevice;
     } catch (_) {
-      // Détection impossible : on suppose un émulateur (10.0.2.2).
       _appareilAndroidPhysique = false;
     }
   }
 
-  // En debug on vise le serveur local, en release la production.
-  _modeLocal = kDebugMode;
+  // Par défaut, on vise la production distante. Un environnement local peut être
+  // forcé via `dart-define` si nécessaire.
+  _modeLocal = false;
 
   if (kDebugMode) {
     debugPrint(
