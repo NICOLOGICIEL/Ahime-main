@@ -570,7 +570,7 @@ class _PageHotelResultState extends State<PageHotelResult> {
 
       throw Exception('Échec de l\'envoi des données ${response.statusCode}');
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

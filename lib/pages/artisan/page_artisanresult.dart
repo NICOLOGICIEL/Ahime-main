@@ -402,7 +402,7 @@ class _PageArtisantResultState extends State<PageArtisantResult> {
 
       throw Exception('Échec de l\'envoi des données ${response.statusCode}');
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

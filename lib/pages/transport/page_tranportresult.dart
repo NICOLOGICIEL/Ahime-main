@@ -463,7 +463,7 @@ class _PageTransportResultState extends State<PageTransportResult> {
 
       throw Exception('Échec de l\'envoi des données ${response.statusCode}');
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
