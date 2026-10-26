@@ -92,7 +92,9 @@ Future<void> initAPIServer() async {
 
   // Par défaut, on vise la production distante. Un environnement local peut être
   // forcé via `dart-define` si nécessaire.
-  _modeLocal = false;
+  // En mode debug, on utilise le serveur local pour le Web aussi (comme Android)
+  // afin que les informations s'affichent correctement.
+  _modeLocal = kDebugMode;
 
   if (kDebugMode) {
     debugPrint(
