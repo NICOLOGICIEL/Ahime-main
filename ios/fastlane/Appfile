@@ -1,0 +1,5 @@
+default_platform(:ios)
+
+app_id("com.ahime.app")
+apple_id("user@example.com") # Replace with actual Apple ID
+end

@@ -1,0 +1,82 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and upload to TestFlight"
+  lane :testflight do
+    setup_ci if ENV['CI']
+    
+    # Build the app
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Release",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          "com.ahime.app" => "Ahime App Store"
+        }
+      }
+    )
+    
+    # Upload to TestFlight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true,
+      changelog: "Build #{lane_context[SharedValues::BUILD_NUMBER]}"
+    )
+  end
+
+  desc "Build for App Store Connect"
+  lane :appstore do
+    setup_ci if ENV['CI']
+    
+    # Build the app
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Release",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          "com.ahime.app" => "Ahime App Store"
+        }
+      }
+    )
+    
+    # Upload to App Store Connect
+    upload_to_app_store(
+      force: true,
+      skip_metadata: false,
+      skip_screenshots: true
+    )
+  end
+
+  desc "Build for ad-hoc distribution"
+  lane :adhoc do
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Release",
+      export_method: "ad-hoc",
+      export_options: {
+        provisioningProfiles: {
+          "com.ahime.app" => "Ahime Ad Hoc"
+        }
+      }
+    )
+  end
+
+  desc "Build for development"
+  lane :development do
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      configuration: "Debug",
+      export_method: "development",
+      export_options: {
+        provisioningProfiles: {
+          "com.ahime.app" => "Ahime Development"
+        }
+      }
+    )
+  end
+end
